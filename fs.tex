@@ -1,0 +1,231 @@
+%definitions for Formelsammlung
+
+\usepackage[left=1.5cm,right=1.5cm,top=2.5cm,bottom=2cm,landscape]{geometry} 
+\usepackage{multicol}
+\usepackage[ngerman]{babel}
+\usepackage{tabularx}
+\usepackage{mathpazo}
+\usepackage{mathtools}
+\usepackage{amsmath}  
+\usepackage{setspace} 
+\usepackage{commath}
+\usepackage[utf8]{inputenc}
+%\usepackage[ansinew]{inputenc}  
+\usepackage[T1]{fontenc}
+\usepackage{lmodern} 
+\usepackage{hyperref}
+\usepackage{bigints}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{layouts}
+\usepackage{siunitx}
+\usepackage{wrapfig}
+\usepackage{multirow,bigstrut}
+\usepackage{trfsigns}
+\usepackage{amssymb} 
+\usepackage{fancyhdr}
+\usepackage{datetime}
+\usepackage{pgfplots}
+\usepgfplotslibrary{fillbetween}
+\usepackage{listings}
+\usepackage{mathrsfs}
+\usepackage{booktabs}
+%\usepackage{mathabx}
+
+\DeclareMathOperator\arctanh{arctanh}
+\DeclareMathOperator\arsinh{arsinh} 
+\DeclareMathOperator\arcosh{arcosh}
+\DeclareMathOperator\artanh{artanh}
+\DeclareMathOperator\arcoth{arcoth} 
+\DeclareMathOperator\sinc{sinc} 
+\DeclareMathOperator\sgn{sgn} 
+\DeclareMathOperator\LPF{LPF} 
+\DeclareMathOperator\Q{Q} 
+\DeclareMathOperator\erf{erf} 
+
+
+%colorCodes
+\definecolor{listinggray}{gray}{0.9}
+\definecolor{lbcolor}{rgb}{0.95,0.95,0.95}
+\definecolor{lightGray}{gray}{0.1}
+
+\definecolor{cOrange}{HTML}{996633}
+\definecolor{clOrange}{HTML}{DBB48D}
+\definecolor{cBlue}{HTML}{336699}
+\definecolor{clBlue}{HTML}{A0BCD8}
+\definecolor{cGreen}{HTML}{339966}
+\definecolor{clGreen}{HTML}{94D4B4}
+\definecolor{cRed}{HTML}{993333}
+\definecolor{clRed}{HTML}{D0B0B0}
+\definecolor{cGray}{gray}{0.4}
+\definecolor{clGray}{gray}{0.96}
+
+
+
+\setlength{\parindent}{0pt}
+%\DeclareMathOperator\arctanh{arccot}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+\newcolumntype{Z}{>{\raggedleft\arraybackslash}X}
+\newcommand{\fmm}{\displaystyle} 
+\newcommand{\cn}[1]{\underline{#1}} 
+\newcommand{\hlaplace}{\quad\laplace\quad}
+\newcommand{\hLaplace}{\quad\Laplace\quad}
+\newcommand{\infint}{\int_{-\infty}^{+\infty}}
+\newcommand{\infiint}{\iint_{-\infty}^{+\infty}}
+\newcommand{\limint}{\lim_{T\rightarrow \infty} \frac{1}{T} \int_{-T/2}^{T/2}}
+\newcommand{\bedeq}{\mathrel{\stackrel{\makebox[0pt]{\mbox{\normalfont\tiny WSS}}}{=\joinrel=}}}
+
+\renewenvironment{description}{\color{cGray}}{}
+\newenvironment{definition}{\color{cGray}}{}
+\newcommand{\cdef}[1]{\begin{definition}#1\end{definition}}
+
+
+\newcommand{\vLaplace}[1][]{\mbox{\setlength{\unitlength}{0.1em}%
+        \begin{picture}(10,20)%
+          \put(3,2){\circle{4}}%
+          \put(3,4){\line(0,1){12}}%
+          \put(3,18){\circle*{4}}%
+          \put(10,7){#1}
+        \end{picture}%
+       }%
+ }%
+
+\newcommand{\vlaplace}[1][]{\mbox{\setlength{\unitlength}{0.1em}%
+        \begin{picture}(10,20)%
+          \put(3,2){\circle*{4}}%
+          \put(3,4){\line(0,1){12}}%
+          \put(3,18){\circle{4}}%
+          \put(10,7){#1}
+        \end{picture}%
+       }%
+ }%         
+ 
+           
+ 
+ 
+ 
+\renewcommand{\arraystretch}{1.5}
+
+
+\newenvironment{mtabular}[1] {
+  \renewcommand{\arraystretch}{2}
+  
+  \begin{tabular}{#1}
+}  
+{
+  \end{tabular}
+  
+  \renewcommand{\arraystretch}{1.5}
+}
+
+\newenvironment{dtabular} {
+  \begin{tabular}{>{\begin{definition}}l<{\end{definition}} >{\begin{definition}}l<{\end{definition}}}
+}  
+{
+  \end{tabular}
+}
+
+\newenvironment{ddtabular} {
+  \begin{center}
+  \begin{tabular}{>{\begin{definition}}l<{\end{definition}} >{\begin{definition}}l<{\end{definition}} | >{\begin{definition}}l<{\end{definition}} >{\begin{definition}}l<{\end{definition}}}
+}  
+{
+  \end{tabular}
+  \end{center}
+}
+
+
+%configure tikz
+%system description
+\usetikzlibrary{shapes,arrows}
+\tikzstyle{block} = [draw, rectangle, minimum height=3em, minimum width=4em]
+\tikzstyle{input} = [coordinate]
+\tikzstyle{output} = [coordinate]
+\tikzstyle{pinstyle} = [pin edge={to-,thin,black}]
+\tikzstyle{sum} = [draw, circle, node distance=1em, minimum height=1.5em]
+\tikzset{>=latex}
+\tikzset{%
+  block/.style    = {draw, thick, rectangle, minimum height = 3em,
+    minimum width = 3em},
+  sum/.style      = {draw, circle, node distance = 1.5cm}, % Adder
+  input/.style    = {coordinate}, % Input
+  output/.style   = {coordinate} % Output
+}
+
+
+%externalize TIKZ
+%\usetikzlibrary{external}
+%\tikzexternalize[prefix=tikz/]
+
+%lstlisting
+
+\lstset{
+  backgroundcolor=\color{lbcolor},
+  tabsize=2,    
+% rulecolor=,
+  language=[GNU]C++,
+  basicstyle=\scriptsize,
+  upquote=true,
+  aboveskip={1.5\baselineskip},
+  columns=fixed,
+  showstringspaces=false,
+  extendedchars=false,
+  breaklines=true,
+  prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+  frame=single,
+  numbers=none,
+  showtabs=false,
+  showspaces=false,
+  showstringspaces=false,
+  identifierstyle=\ttfamily,
+  keywordstyle=\color{cBlue}
+  commentstyle=\color{cGreen},
+  stringstyle=\color{cRed},
+  numberstyle=\color{black},
+% \lstdefinestyle{C++}{language=C++,style=numbers}’.
+}
+\lstset{
+  backgroundcolor=\color{lbcolor},
+  tabsize=2,
+  language=C++,
+  captionpos=b,
+  tabsize=3,
+  frame=lines,
+  numbers=none,
+  numberstyle=\tiny,
+  numbersep=5pt,
+  breaklines=true,
+  showstringspaces=false,
+  basicstyle=\ttfamily,
+  identifierstyle=\color{cOrange},
+  keywordstyle=\color{cBlue},
+  commentstyle=\color{cGreen},
+  stringstyle=\color{cRed}
+}
+
+\lstdefinelanguage{makefile}{
+  morekeywords={cc,CFLAGS,LFLAGS,OBJ,EXE},
+  morecomment=[l]{\#}
+}
+
+\lstdefinestyle{makefile}{
+  language=makefile,
+  basicstyle=\ttfamily,
+  keywordstyle=\color{cBlue},
+  commentstyle=\color{cGreen},
+  frame=lines,
+  numbers=none,
+  backgroundcolor=\color{lbcolor}
+}
+
+%header & footer
+\pagestyle{fancy}
+\lhead{Tibor Schneider}
+\rhead{Seite \thepage}
+\cfoot{\today} 
+
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}

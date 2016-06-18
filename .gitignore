@@ -1,0 +1,9 @@
+*.aux
+*.log
+*.out
+.project
+.texlipse
+*.synctex.gz
+*.auxlock
+tikz/*
+vect10.600pk

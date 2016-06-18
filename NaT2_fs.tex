@@ -1,0 +1,1312 @@
+%%This is a very basic article template.
+%%There is just one section and two subsections.
+\documentclass[a4paper]{article}
+
+\input{fs.tex}
+%Title of Document
+\chead{Nachrichtentechnik 2 - Formelsammlung} 
+
+\begin{document}
+
+\begin{twocolumn}
+ 
+\section{Wahrscheinlichkeitsrechnung}
+
+\subsection{Begriffe}
+Bei \textbf{a-priori} sind die Wahrscheinlichkeiten bereits vor dem ersten Durchführen des
+Experimentes bekannt. Es kann auch erzwungen werden. Beispiel: Fairer Würfel. Bei
+\textbf{a-posteriori} werden die Wahrscheinlichkeiten ermittelt, indem das Experiment
+durchgeführt wird.
+
+Wenn 2 Ereignisse \textbf{Unabhängig} sind, so verändert das Auftreten eines Ereignis
+nicht die Wahrscheinlichkeit des anderen Ereignis: $P(B \vert A) = P(B)$. 
+
+Ein \textbf{Elementarereignis} ist ein Ereignisraum mit nur einem Ereignis.
+
+\subsection{Definition Zufallsexperiment}
+\begin{description}
+  \begin{tabularx}{\columnwidth}{XX}
+    \begin{tabular}{ll}
+      $S$ & Ereignisraum ($\Omega$) \\
+      $n$ & Anzahl Ereignisse in $S$ \\
+      $\lambda_k$ & Ereignis \\
+      $A \in S$ & Teilmenge von $S$ \\
+      $F_X(x)$ & Verteilungsfunktion \\
+      $f_X(x)$ & W'keitsdichte-Funktion \\
+      $\mu_X$ & Erwartungswert \\
+      $\sigma_X^2$ & Varianz
+    \end{tabular} &   
+    \begin{tabular}{ll} 
+      $\overline{A} = S \setminus A$ & Komplementärereignis \\
+      $C = A \cup B$ & Ereignisse in A \textbf{und} B \\
+      $C = A \cap B$ & Ereignisse in A \textbf{oder} B\\
+      $C = S$ & Sichereres Ereignis \\
+      $C = \emptyset$ & Unmögliches Ereignis \\
+      $B \subset A$ & B ist Teil von A\\
+      $A \cap B = \emptyset$ & A und B sind \textbf{disjunkte} \\
+    \end{tabular}
+  \end{tabularx}  
+\end{description}
+
+\subsection{Wahrscheinlichkeiten}
+\begin{tabular}{c} 
+  $\fmm 0 \leq P(A) \leq 1 \qquad \fmm P(S) = 1 \qquad P(\emptyset) = 0$ \\
+  $\fmm P(\overline{A}) = 1 - P(A)$ \\
+  $\fmm P(B) \leq P(A) \quad \text{für } B \subset A$ \\
+  $\fmm P(A \cup B = P(A) + P(B) \quad \text{für disjunkte A und B})$ \\
+  $\fmm P(A \cup B) = P(A) + P(B) - P(A \cap B)$ \\
+  $\fmm P(B \vert A) = \frac{P(A \cap B)}{P(A)} = P(A \vert B) \cdot \frac{P(B)}{P(A)}$ \\
+  $\fmm P(A \cap B) = P(A) \cdot P(B) \quad \text{wenn A und B Unabhängig}$ \\
+\end{tabular}
+
+\subsection{Verteilungsfunktion}
+\begin{tabular}{c}
+  $\fmm F_X(x) = P(X \leq x) \quad \text{für } x \in (-\infty, \infty), \quad
+  F_X(-\infty) = 0 \quad F_X(\infty) = 1$ \\
+  $\fmm P(a < x \leq b) = F_X(b) - F_X(a) \qquad P(X > a) = 1 - F_X(a)$ \\
+  $\fmm f_X(x) = \frac{dF_X(x)}{dx} \geq 0 \quad F_X(x) = \int_{-\infty}^x f_X(\tilde{x})
+  \cdot d\tilde{x} \qquad \int_{-\infty}^{\infty}f_X(x) \cdot dx = 1$
+\end{tabular}
+
+\subsection{Mehrdimensionale Zufallsvariablen}
+\begin{definition}
+  \begin{tabularx}{\columnwidth}{XX}
+    \begin{tabular}{ll}
+      $F_{XY}(x,y)$ & W'Keit von 2 ZV
+      \\
+      $p_{XY}(x,y)$ &
+      Verbundsw'keitsf.\\
+      $Z = g(X,Y)$ &
+      Kombinierte ZV \\
+    \end{tabular}&
+    \begin{tabular}{l}
+      $F_{XY}(x,y) = P(X \leq x, Y \leq y)$\\
+      $p_{XY}(x,y) = P(X=x_i, Y=y_k)$  \\
+    \end{tabular}
+  \end{tabularx}
+\end{definition} 
+
+\begin{tabularx}{\columnwidth}{ZX}
+  (1) Wenn statistisch Unabhängig: & $\begin{array}{l} F_{XY}(x,y) = F_X(x) \cdot F_Y(y)
+  \\
+  p_{XY}(x,y) = p_X(x) \cdot p_Y(y)  \end{array}$ \\
+  Randverteilungsfunktion: & $\begin{array}{l} F_X(x) = F_{XY}(x, +\infty) \\ F_X(x) =
+  F_{XY}(x, +\infty) \end{array}$ \\
+  Verbundsw'keitsfunktion & $\begin{array}{l} \fmm p_X(x) = \sum_{y_k} p_{XY}(x,y_k) \\
+  \fmm p_Y(y) = \sum_{x_i} p_{XY}(x_i,y) \end{array}$ \\
+\end{tabularx}
+
+\subsubsection{Verbundw'keitsdichtefunktion}
+\begin{tabularx}{\columnwidth}{YY}
+  \multicolumn{2}{c}{
+  $\fmm f_{XY}(x,y) = \frac{\partial^2 F_{XY}(x,y)}{\partial x \cdot \partial y} =
+  f_X(x) \cdot f_Y(y) \quad \text{falls X, Y statistisch Unabhängig}$}
+  \\
+  $\fmm f_X(x) = \int_{-\infty}^{\infty}f_{XY}(x,y) dy$ &
+  $\fmm f_Y(y) = \int_{-\infty}^{\infty}f_{XY}(x,y) dx$ \\
+\end{tabularx}
+
+\subsubsection{Erwartungswert (n-tes Moment) \& Varianz}
+\begin{tabular}{ll}
+  \multicolumn{2}{l}{$\fmm \mu_X = E[X] = \sum_{i} x_i \cdot p_X(x_i) =
+  \int_{-\infty}^\infty x \cdot f_X(x) \cdot dx = ``\text{Wert } \cdot \text{W'keit}"$}\\
+  Linearität des Erwartungswert & 
+  $E[X+Y] = E[X] + E[Y] $ \\
+  & $E(cX) = cE[X]$ \\
+\end{tabular}
+
+\begin{tabularx}{\columnwidth}{Y}
+\textbf{Erwartungswert \& Moment} \\
+$\fmm E[Y] = E[g(X)] = \sum_{i} g(x_i) \cdot p_X(x_i) = \int_{-\infty}^\infty g(x) \cdot
+f_X(x) \cdot dx$ \\
+$ E[Z] = E[g(X,Y)] = \sum_i \left( \sum_j g(x_i,y_j) \cdot p_{XY}(x_i,y_i) \right)$  \\
+$ \fmm E[Z] = E[g(X,Y)] = 
+\int_{-\infty}^\infty \left( \int_{-\infty}^\infty g(x,y) \cdot f_{XY}(x,y) dx \right) dy$
+\\ 
+$ \fmm \text{n-tes Moment: } E(X^n) = \sum_i x_i^n \cdot p_X(x_i) =
+\int_{-\infty}^{\infty} x^n \cdot f_X(x) \cdot dx$ \\
+\textbf{Varianz} \\
+$\fmm \sigma_X^2 = Var(X) = E \left[ X^2 \right] - \mu_X^2 = \sum_i(x_i - \mu_X)^2 \cdot p_X(x_i)$ \\
+$\fmm \sigma_X^2 = Var(X) = \int_{-\infty}^{\infty} (x-\mu_X)^2 \cdot f_X(x) \cdot dx$ \\
+\end{tabularx}
+
+\subsubsection{(k,n)-tes Moment $m_{kn}$, Korrelation $m_{11}$}
+\begin{tabularx}{\columnwidth}{Y}
+  $\fmm m_{kn} = E \left[ X^k Y^n \right] = \sum_j \left( \sum_i x_i^k y_j^n \cdot
+  p_{XY}(x_i,y_i)\right)$ \\
+  $\fmm m_{kn} = E\left[X^k Y^n\right] = \int_{-\infty}^\infty \left(
+  \int_{-\infty}^\infty x^k y^n \cdot f_{XY}(x,y) \cdot dx \right) dy$ \\
+  $\fmm \textbf{Spezialfall: Korrelation} \quad m_{11} = E[XY] $
+\end{tabularx}
+
+\subsubsection{Kovarianz $\sigma_{XY}$}
+\begin{tabularx}{\columnwidth}{Y}
+  $\fmm \sigma_{XY} = Cov(X,Y) = E\left[ (X-\mu_X) \cdot (Y-\mu_Y) \right] $ \\
+  $\fmm \sigma_{XY} = E[XY] - E[X] \cdot E[Y] = m_{11} - \mu_X \cdot \mu_Y$ \\
+  Die zwei Zufallsvariablen $X$ und $Y$ sind \textbf{unkorreliert}, falls $\sigma_{XY} =
+  0$. Statistisch unabhängige Zufallsvariablen sind unkorreliert.
+\end{tabularx}
+
+\subsubsection{Korrelations-Koeffizient $\rho(PX)$}
+$$\rho(X,Y) = \rho_{XY} = \frac{\sigma_{XY}}{\sigma_{X} \cdot \sigma_Y} \qquad
+\abs{\rho_{XY}} \leq 1$$
+
+\subsection{Verteilungen}
+$$\binom{n}{k} = \frac{n!}{(n-k)! \cdot k!} \text{ (TR: ncr)}$$
+\subsubsection{Binomialverteilung}
+Ein Experiment mit 2 möglichen Ausgängen, welche mit der W'keit $p$, bzw. $1-p$
+zutreffen, wird $n$ mal wiederholt. Die ZV $x$ ist die Anzahl, wie oft ein Ausgang
+eintritt. 
+
+\vspace{1em}
+
+\begin{tabular}{@{}p{0.35\columnwidth}l@{}}
+  \begin{tabular}{c}
+    $\fmm \mu_X = n \cdot p \quad \sigma_x^2 = n p \cdot (1-p) $ \\
+    $\fmm p_X(k) = \binom{n}{k} p^k \cdot q^{n-k}$ \\
+    $\fmm F_X(x) = \sum_{k=0}^m \binom{n}{k} p^k \cdot q^{n-k}$ \\
+    \textbf{Grafik:} $p=0.4$, $n=100$
+  \end{tabular} & 
+  \begin{tabular}{l}
+    \begin{tikzpicture}
+      \begin{axis}[xlabel=$x$, ylabel=$p_X(x)$, axis lines=middle, width=0.6\columnwidth,
+                   height=0.35\columnwidth, ytick = {0}, axis line style = {-latex}]
+        %\pgfplotsset{ticks=none}
+        \addplot [draw=cRed, name path=f, thick] coordinates{
+              (1,0.0000)(2,0.0000)(3,0.0000)(4,0.0000)(5,0.0000)(6,0.0000)(7,0.0000)(8,0.0000)(9,0.0000)(10,0.0000)(11,0.0000)(12,0.0000)(13,0.0000)(14,0.0000)(15,0.0000)(16,0.0000)(17,0.0000)(18,0.0000)(19,0.0000)(20,0.0000)(21,0.0000)(22,0.0001)(23,0.0001)(24,0.0003)(25,0.0006)(26,0.0012)(27,0.0022)(28,0.0038)(29,0.0063)(30,0.0100)(31,0.0151)(32,0.0217)(33,0.0297)(34,0.0391)(35,0.0491)(36,0.0591)(37,0.0682)(38,0.0754)(39,0.0799)(40,0.0812)(41,0.0792)(42,0.0742)(43,0.0667)(44,0.0576)(45,0.0478)(46,0.0381)(47,0.0292)(48,0.0215)(49,0.0152)(50,0.0103)(51,0.0068)(52,0.0042)(53,0.0026)(54,0.0015)(55,0.0008)(56,0.0004)(57,0.0002)(58,0.0001)(59,0.0001)(60,0.0000)(61,0.0000)(62,0.0000)(63,0.0000)(64,0.0000)(65,0.0000)(66,0.0000)(67,0.0000)(68,0.0000)(69,0.0000)(70,0.0000)(71,0.0000)(72,0.0000)(73,0.0000)(74,0.0000)(75,0.0000)(76,0.0000)(77,0.0000)(78,0.0000)(79,0.0000)(80,0.0000)(81,0.0000)(82,0.0000)(83,0.0000)(84,0.0000)(85,0.0000)(86,0.0000)(87,0.0000)(88,0.0000)(89,0.0000)(90,0.0000)(91,0.0000)(92,0.0000)(93,0.0000)(94,0.0000)(95,0.0000)(96,0.0000)(97,0.0000)(98,0.0000)(99,0.0000)(100,0.0000)
+            }; 
+        \path[name path=axis, draw=none] (axis cs:0,0) -- (axis cs:100,0);
+        \addplot [thick, color=clRed, fill=cRed, fill opacity=0.2] fill between[of=f and
+        axis, soft clip={domain=-1:1}];
+      \end{axis}
+    \end{tikzpicture}
+  \end{tabular}
+\end{tabular}
+
+\subsubsection{Poissonverteilung}
+Eintreten eines seltenen Ereignis ($p \ll 1$) innerhalb einer gewissen Zeitspanne. In NaT
+wird es jedoch meisstens in einer gewissen Länge $n$ betrachtet.
+
+\vspace{1em}
+\begin{tabular}{@{}p{0.35\columnwidth}l@{}}
+  \begin{tabular}{c}
+    $\mu_X = np = \lambda \qquad \sigma_X^2 = np = \lambda$ \\
+    $\fmm p_X(k) = e^{-\lambda} \cdot \frac{\lambda^k}{k!}$\\
+    $\fmm F_X(x) = e^{-\lambda} \cdot \sum_{k=0}^x \frac{\lambda^k}{k!}$ \\
+    \textbf{Grafik: }$n=1000$, $p=0.005$  
+  \end{tabular} & 
+  \begin{tabular}{l}
+    \begin{tikzpicture}
+      \begin{axis}[xlabel=$x$, ylabel=$F_X(x)$, axis lines=middle, width=0.6\columnwidth,
+                   height=0.35\columnwidth, ymin = 0, ymax = 1.1, ytick = {0, 1}, axis line
+                   style = {-latex}]
+        %\pgfplotsset{ticks=none}
+        \addplot [const plot,color=cRed, thick]
+        coordinates{ (0,0.04043)(1,0.12465)(2,0.26503)(3,0.44049)(4,0.61596)(5,0.76218)(6,0.86663)(7,0.93191)
+              (8,0.96817)(9,0.98630)(10,0.99455)(11,0.99798)(12,0.99930)(13,0.99977)(14,0.99993)(15,0.99998)
+              (16,0.99999)(17,1.00000)(18,1.00000)(19,1.00000)(20,1.00000)
+        };
+
+      \end{axis}
+    \end{tikzpicture}
+  \end{tabular}
+\end{tabular}
+
+\newpage
+
+\subsubsection{Normalverteilung (Gaussverteilung)}
+Anwendbar bei einer ZV, welche aus vielen Faktoren besteht. Beispiel: thermische
+Rauschquelle.
+
+\begin{tabular}{@{}p{0.35\columnwidth}l@{}}
+  \begin{tabular}{c}
+    $\fmm f_X(x) = \frac{1}{\sigma \sqrt{2\pi}}\cdot e^{\frac{-(x-\mu)^2}{2\sigma^2}}$ \\
+    $\fmm F_X(x) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\frac{x-\mu}{\sigma}}
+    e^\frac{-\xi^2}{2} \cdot d\xi $ \\
+    Normalisierung: $\fmm z := \frac{x-\mu}{\sigma}$
+  \end{tabular} & 
+  \begin{tabular}{l}
+    \begin{tikzpicture}
+      \begin{axis}[xlabel=$x$, axis lines=middle, width=0.65\columnwidth,
+                   height=0.35\columnwidth, xmin=-3.2, xmax=3.2, ymin=-0.1,ymax=1.2,
+                   ytick = {0,0.5,1}, xtick = {-1,0, 0.6,1, 1.5}, xticklabels =
+                   {$-\sigma$, $\mu$, $x_1$, $\sigma$, $x_2$}, legend pos=north west, legend
+                   style={draw=none}, axis line style = {-latex}]
+        %\pgfplotsset{ticks=none}
+
+        \addplot [name path=f,color=cRed, thick] coordinates{
+          (-4.0,0.0001)(-3.9,0.0002)(-3.8,0.0003)(-3.7,0.0004)(-3.6,0.0006)(-3.5,0.0009)(-3.4,0.0012)(-3.3,0.0017)(-3.2,0.0024)(-3.1,0.0033)(-3.0,0.0044)(-2.9,0.0060)(-2.8,0.0079)(-2.7,0.0104)(-2.6,0.0136)(-2.5,0.0175)(-2.4,0.0224)(-2.3,0.0283)(-2.2,0.0355)(-2.1,0.0440)(-2.0,0.0540)(-1.9,0.0656)(-1.8,0.0790)(-1.7,0.0940)(-1.6,0.1109)(-1.5,0.1295)(-1.4,0.1497)(-1.3,0.1714)(-1.2,0.1942)(-1.1,0.2179)(-1.0,0.2420)(-0.9,0.2661)(-0.8,0.2897)(-0.7,0.3123)(-0.6,0.3332)(-0.5,0.3521)(-0.4,0.3683)(-0.3,0.3814)(-0.2,0.3910)(-0.1,0.3970)(0.0,0.3989)(0.1,0.3970)(0.2,0.3910)(0.3,0.3814)(0.4,0.3683)(0.5,0.3521)(0.6,0.3332)(0.7,0.3123)(0.8,0.2897)(0.9,0.2661)(1.0,0.2420)(1.1,0.2179)(1.2,0.1942)(1.3,0.1714)(1.4,0.1497)(1.5,0.1295)(1.6,0.1109)(1.7,0.0940)(1.8,0.0790)(1.9,0.0656)(2.0,0.0540)(2.1,0.0440)(2.2,0.0355)(2.3,0.0283)(2.4,0.0224)(2.5,0.0175)(2.6,0.0136)(2.7,0.0104)(2.8,0.0079)(2.9,0.0060)(3.0,0.0044)(3.1,0.0033)(3.2,0.0024)(3.3,0.0017)(3.4,0.0012)(3.5,0.0009)(3.6,0.0006)(3.7,0.0004)(3.8,0.0003)(3.9,0.0002)(4.0,0.0001)
+          };
+        \addlegendentry{$f_X(x)$};
+        \addplot [color=cGreen, thick] coordinates{
+          (-4.0,0.0000)(-3.9,0.0000)(-3.8,0.0001)(-3.7,0.0001)(-3.6,0.0002)(-3.5,0.0002)(-3.4,0.0003)(-3.3,0.0005)(-3.2,0.0007)(-3.1,0.0010)(-3.0,0.0013)(-2.9,0.0019)(-2.8,0.0026)(-2.7,0.0035)(-2.6,0.0047)(-2.5,0.0062)(-2.4,0.0082)(-2.3,0.0107)(-2.2,0.0139)(-2.1,0.0179)(-2.0,0.0228)(-1.9,0.0287)(-1.8,0.0359)(-1.7,0.0446)(-1.6,0.0548)(-1.5,0.0668)(-1.4,0.0808)(-1.3,0.0968)(-1.2,0.1151)(-1.1,0.1357)(-1.0,0.1587)(-0.9,0.1841)(-0.8,0.2119)(-0.7,0.2420)(-0.6,0.2743)(-0.5,0.3085)(-0.4,0.3446)(-0.3,0.3821)(-0.2,0.4207)(-0.1,0.4602)(0.0,0.5000)(0.1,0.5398)(0.2,0.5793)(0.3,0.6179)(0.4,0.6554)(0.5,0.6915)(0.6,0.7257)(0.7,0.7580)(0.8,0.7881)(0.9,0.8159)(1.0,0.8413)(1.1,0.8643)(1.2,0.8849)(1.3,0.9032)(1.4,0.9192)(1.5,0.9332)(1.6,0.9452)(1.7,0.9554)(1.8,0.9641)(1.9,0.9713)(2.0,0.9772)(2.1,0.9821)(2.2,0.9861)(2.3,0.9893)(2.4,0.9918)(2.5,0.9938)(2.6,0.9953)(2.7,0.9965)(2.8,0.9974)(2.9,0.9981)(3.0,0.9987)(3.1,0.9990)(3.2,0.9993)(3.3,0.9995)(3.4,0.9997)(3.5,0.9998)(3.6,0.9998)(3.7,0.9999)(3.8,0.9999)(3.9,1.0000)(4.0,1.0000)
+          };
+
+
+        \addlegendentry{$F_X(x)$};
+
+        \draw [dashed] (axis cs:-1,0) -- (axis cs:-1,0.2420);
+        \draw [dashed] (axis cs:1,0.2420) -- (axis cs:1,0);
+
+        \path[name path=axis] (axis cs:0,0) -- (axis cs:0.6,0);
+        \addplot [thick, color=clRed, fill=cRed, fill opacity=0.2] fill between[of=f and
+        axis, soft clip={domain=0:0.6}];
+
+
+        \path[name path=axis] (axis cs:1.5,0) -- (axis cs:4,0);
+        \addplot [thick, color=clRed, fill=cBlue, fill opacity=0.3] fill between[of=f and
+        axis, soft clip={domain=1.5:4}];
+
+        \draw [<-, color=cRed, >=latex] (axis cs:0.4,0.145) -- (axis cs:1.7, 0.5);
+        \node [color=cRed, above right] at (axis cs:1.65,0.37) {$\erf(x)$};
+
+        \draw [<-, color=cBlue, >=latex] (axis cs:1.7,0.045) -- (axis cs:1.9, 0.25);
+        \node [color=cBlue, above right] at (axis cs:1.85,0.12) {$\Q(x)$};
+
+      \end{axis}
+
+    \end{tikzpicture}
+  \end{tabular}
+\end{tabular}
+
+\begin{tabularx}{\columnwidth}{Y|Y}
+   $\color{cBlue}\Q(x)$ \textbf{als Skalierung} & $\color{cRed}\erf(x)$ \textbf{als
+   Matlab-Funktion:} \\ 
+   $\fmm \Q(z) = \frac{1}{\sqrt{2\pi}} \int_z^\infty e^{-\frac{\xi^2}{2}} d\xi$&
+  $\fmm \erf(x) = \frac{2}{\sqrt{\pi}} \int_0^x e^{-\xi^2} d\xi$ \\
+  $\fmm F_X(x) = 1-\Q\left(\frac{x-\mu}{\sigma}\right) = 1-\Q(z)$&
+  $\fmm F_X(x) = \frac{1}{2} \left( 1 + \erf \left( \frac{x - \mu}{\sqrt{2}\sigma}\right)
+  \right)$ \\
+  $\fmm \Q(-z) = -\Q(z)$
+\end{tabularx}
+
+\section{Zufallsprozesse}
+\begin{definition}
+\begin{tabularx}{\columnwidth}{XX}
+    \begin{tabular}{ll}
+      $X(t, \lambda)$ & Zufallsprozess \\ 
+      \multicolumn{2}{l}{$X(t,\lambda_i) = x_i(t) \quad$ Musterfunktion} \\
+      $X_k(\lambda)$ & ZV zum Zeitpunkt $t_k$ \\
+      $F_{X_k}(x_k;t_k)$ & Verteilungsfunktion \\
+      $f_{X_k}(x_k;t_k)$ & W'keitsdichtefunktion \\
+      $\mu_X(t)$ & Erwartungswert von $X(t)$\\
+      $R_{XX}(t_1,t_2)$ & Autokorrelation \\
+      $C_{XX}(t_1,t_2)$ & Autokovarianz \\
+      \multicolumn{2}{l}{$C_{XX}(t_1,t_2) = 0\quad$ ZV sind unkorreliert}  \\
+    \end{tabular}&
+    \begin{tabular}{l}
+      $\fmm F_{X_k}(x_k;t_k) = P \{ X_k(t_k) \leq x_k \}$ \\
+      $\fmm f_{X_k}(x_k;t_k) = \frac{\partial F_{X_k}(x_k;t_k)}{\partial x_k}$ \\
+      $\fmm F_X(x_1, x_2;t_1, t_2) $ \\
+      $ \qquad = P \{X(t_1) \leq x_1, X(t_2) \leq x_2 \}$ \\
+      $\fmm f_X(x_1,x_2;t_1,t_2) = \frac{\partial^2 F_X(x_1,x_2;t_1,t_2)}{\partial x_1
+      \partial x_2}$\\ 
+      $\tau = t_1 - t_2$
+    \end{tabular}
+\end{tabularx}
+\end{definition} 
+
+\subsection{Statische Kennwerte}
+
+\begin{tabular}{c}
+  $\fmm \mu_x(t) = E \left[X(t) \right] = \infint x \cdot f_X(x;t) dx$ \\
+  $\fmm R_{XX}(t_1,t_2) = E \left[ X(t_1)X(t_2) \right] = \infiint x_1 x_2 \cdot
+  f_X(x_1,x_2;t_1,t_2) \cdot dx_1 \cdot dx_2$ \\
+  $\fmm C_{XX}(t_1,t_2) = R_{XX}(t_1, t_2) - \mu_x(t_1) \cdot \mu_x(t_2)$
+\end{tabular} 
+
+
+\subsection{Stationarität}
+Ein Zufallsprozess ist Stationär, wenn ihre statistischen Eigenschaften zeitlich
+unverändert bleiben. Man unterschiedet streng und schwach stationäre Prozesse.
+
+\subsubsection{Statische Eigenschaften}
+\begin{tabularx}{\columnwidth}{Y}
+  $\fmm \overline{x} = \left< x(t) \right> = \limint x(t) dt$ \\
+  $\fmm \overline{R_{XX}}(\tau) = \left<x(t) \cdot x(t + \tau) \right> = \limint x(t)
+  \cdot x(t + \tau) dt$ \\
+  $\fmm E[\overline{x}] = \limint E \left[x(t) \right] dt = \limint \mu_x(t) dt$
+\end{tabularx}
+
+\subsubsection{Streng stationärer Zufallsprozess (SSS)}
+\begin{tabularx}{\columnwidth}{XX}
+  \begin{tabular}{p{0.45\columnwidth}}
+    Alle statischen Eigenschaften eines SSS-Prozesses sind unabhängig von einer beliebigen
+    Zeitverschiebung $t_c$: 
+  \end{tabular}&
+  \begin{tabular}{l}
+    $E \left[X(t) \right] = \mu_x$ \\
+    $R_{XX}(t_1,t_2) = R_X(\tau)$ \\
+    $C_{XX}(t_1,t_2) = R_X(\tau) - \mu_x^2$
+  \end{tabular}
+\end{tabularx}
+
+\subsubsection{Schwach stationärer Zufallsprozess (WSS)}
+\begin{tabularx}{\columnwidth}{XX}
+  \begin{tabular}{p{0.45\columnwidth}}
+    Ein Zufallsprozess ist schwach stationär, sobald folgende Eigenschaft erfüllt ist: \\
+    $f_X(x_1,x_2;t_1,t_2) $ \\
+    $\qquad = f_X(x_1,x_2;t_1+t_c,t_2+t_c)$
+  \end{tabular}&
+  \begin{tabular}{l}
+    $E \left[X(t) \right] = \mu_x$ \\
+    $R_{XX}(t_1,t_2) = R_X(\tau)$ \\
+    $C_{XX}(t_1,t_2) = R_X(\tau) - \mu_x^2 = C_{XX}(\tau)$ \\
+  \end{tabular}
+\end{tabularx}
+
+\subsubsection{Ergodizität}
+\begin{tabularx}{\columnwidth}{XX}
+  \begin{tabular}{p{0.45\columnwidth}}
+    Ein Stationärer Prozess ist ergodisch, wenn zusätzlich auch jede einzelne Musterfunktion
+    dieselben Zeitmittelwerte besitzt, und wenn diese mit den statischen Kennwerten der Schar
+    übereinstimmt. 
+    \\
+    \begin{tabular}{>{\color{cGray}}l>{\color{cGray}}l}
+      $E \left[X(t)\right]$ & DC-Level \\
+      $E \left[X(t)\right]^2$ & DC-Leistung \\
+      $E \left[X^2(t)\right]$ & Gesamtleistung \\
+      $\sigma_X^2(t)$ & AC-Leistung \\
+      $\sugma_X(t)$ & RMS-Level \\
+    \end{tabular}
+  \end{tabular}&
+  \begin{tabular}{l}
+    $\fmm \overline{x_i} = \overline{x_i(t)} = E \left[x(t)\right] = \mu_X$ \\
+    $\fmm E \left[\overline{x(t)}\right] = \mu_X$ \\
+    $E\left[ X(t) \right] = \overline{x} = \left<x(t)\right>$ \\
+    $E\left[ X(t) \right]^2 = \left< x(t) \right>^2 \quad $ \\
+    $E\left[ X^2(t) \right] = R_{XX}(t) = \left< x^2(t) \right>$\\
+    $\sigma_X^2(t) = \left<x^2(t) \right> - \left< x(t) \right>^2$ \\
+    $\sigma_X(t) = \overline{\sigma_X}$ \\
+  \end{tabular} 
+\end{tabularx}
+
+\subsubsection{Eigenschaften von stationären Zufallsprozessen}
+
+Auto- und Kreuz\textbf{korrelation}sfunktion bei WSS Prozessen:
+\vspace{0.5em}
+
+\begin{tabularx}{\columnwidth}{ZX}
+   & $R_{XX}(-\tau) = R_{XX}(\tau)$ \\
+   $R_{XX}(\tau) = E\left[ X(t) X(t + \tau) \right]$ &
+   $\abs{R_{XX}(\tau)} \leq R_{XX}(0)$ \\
+   & $R_{XX}(0) = E\left[ X^2(x) \right]$ \\
+\end{tabularx}
+
+\vspace{0.5em}
+
+\begin{tabularx}{\columnwidth}{ZX}   
+   & $R_{XY}(-\tau) = R_XY(\tau)$ \\
+   $R_{XY}(\tau) = E\left[ X(t) Y(t + \tau) \right]$ &
+   $\abs{R_{XY}{\tau}} \leq \frac{1}{2} \left( R_{XX}(0) + R_{YY}(0) \right)$ \\
+   & $R_{XY}(\tau) \leq \sqrt{R_{XX}(0) R_{YY}(0)}$ \\
+\end{tabularx}
+
+\vspace{1em}
+Auto- und Kreuz\textbf{kovarianz} be WSS Prozessen:
+\vspace{0.5em}
+
+\begin{tabularx}{\columnwidth}{Y}
+  $C_{XX}(\tau) = R_{XX}(\tau) - \mu_X^2$ \\
+  $C_{XY}(\tau) = R_{XY}(\tau) - \mu_X \cdot \mu_Y$
+  $C_{XY}(\tau) = 0 \longrightarrow \text{Zufallsprozesse sind zueinander unkorreliert}$
+\end{tabularx}
+
+\newpage
+Spektrale \textbf{Leistung} bei WSS Prozessen:
+\vspace{0.5em}
+
+\begin{tabularx}{\columnwidth}{Y}
+  $\fmm S_{XX}(\omega) = E \left[ \lim_{T\rightarrow \infty} \frac{1}{T} \cdot
+  \abd{X(\omega)}^2 \right] = \lim_{T\rightarrow \infty} \frac{1}{T} \cdot E\left[
+  \abs{X(\omega)}^2 \right]$ \\
+  $\fmm S_{XX}(\omega) = \infint R_{XX}(\tau) \cdot e^{-j \omega \tau}d \tau \qquad
+  R_{XX}(\tau) = \frac{1}{2\pi} \infint S_{XX}(\omega) \cdot e^{j \omega \tau} d\omega$
+\end{tabularx}
+
+\subsection{Übertragung von Zufallsprozessen über LTI-Systeme}
+\begin{tabular}{cl}
+  \begin{tabular}{c}
+    $\fmm Y(t) = X(t) \ast h(t) = \infint h(u)X(t-u) du$ \\
+    $\fmm \mu_Y(t) = h(t) \ast \mu_x(t) \bedeq H(0) \cdot \mu_X$ \\
+  \end{tabular} &
+  \begin{tabular}{l}
+    \begin{tikzpicture}[auto, node distance=2cm,>=latex']
+      \node [input, name=input] {};
+      \node [block, right of=input] (system) {$h(t)$};
+      \node [output, right of=system] (output) {};
+
+      \draw [->] (input) -- node[name=x] {$X(t)$} (system);
+      \draw [->] (system) -- node [name=y] {$Y(t)$} (output);
+    \end{tikzpicture}
+  \end{tabular}
+\end{tabular}
+
+\begin{tabular}{c}
+  $\fmm R_{YY}(t_1,t_2) = \infiint h(u_1) \cdot h(u_2) \cdot R_{XX}(t_1-u_1,t_2-u_2 )
+  \cdot du_1 \cdot du_2 $ \\
+  $\fmm R_{YY}(\tau) \bedeq \infiint h(u_1) \cdot h(u_2) \cdot R_{XX}(\tau + u_1 - u_2)
+  \cdot du_1 \cdot du_2$ \\
+  Wenn $X(t)$ ein WSS-Prozess ist, ist $Y(t)$ auch ein WSS-Prozess.
+\end{tabular}
+
+\subsubsection{Leistungsdichtespektrum}
+  \begin{tabular}{c}
+  $\fmm S_{YY}(\omega) = \infint R_{YY}(\tau) \cdot e^{-j \omega \tau} d\tau =
+  H^\ast(\omega) \cdot H(\omega) \cdot S_{XX}(\omega) = \abs{H(\omega)}^2 \cdot
+  S_{XX}(\omega)$ \\
+  $\fmm R_{YY}(\tau) = \frac{1}{2\pi} \infint \abs{H(\omega)}^2 \cdot S_{XX}(\omega) \cdot
+  e^{j \omega \tau} d\omega$ \\
+  $\fmm E\left[Y^2(t)\right] = R_{YY}(0) = \frac{1}{2\pi} \infint \abs{H(\omega)}^2 \cdot
+  S_{XX}(\omega) d\omega$
+\end{tabular}
+
+\subsection{Spezielle Zufallsprozesse}
+\subsubsection{Gauss'scher Zufallsprozess}
+Zu jedem Zeitpunkt $t_i$ ist die Zufallsvariable $X(t_i)$ normalverteilt. Ist ein
+gauss'scher Zufallsprozess WSS, ist er auch SSS. Ein gauss'scher Zufallsprozess $X(t)$ ist
+am Ausgang eines LTi Systems $Y(t)$ auch gaussisch.
+
+\begin{tabular}{c}
+$\fmm f_x(x_1,x_2;t_1,t_2) = \frac{1}{2\pi \sigma_{x_1}
+\sigma_{x_2}} \cdot e^{-\frac{(x_1-\mu_{x_1})^2}{2\sigma_{x_1}^2}} \cdot
+e^{-\frac{(x_2-\mu_{x_2})^2}{2\sigma_{x_2}^2}}$ \\
+$\fmm \text{Wenn } C_{XX}(t_1,t_2) = 0 \text{, dann ist } f_{XX}(x_1,x_2;t_1,t_2) =
+f_X(x_1;t_1) \cdot f_X{x_2;t_2}$
+\end{tabular}
+
+\subsection{Spektren von Zufallssesquenzen berechnen}
+\begin{enumerate}
+  \item Stationärer Zufallsprozess wird vorausgesetzt: Musterfunktion darf um eine beliebige 
+  Verschiebung $\Delta t$ verschoben werden. Zu jedem Zeitpunkt ist jede Sequenz denkbar.
+  \item Eindimensionale (diskrete) Amplitudenverteilung: $p_X(x)$
+  
+  \begin{tikzpicture}
+    \begin{axis}[width=5cm, height=3cm, xlabel=$x$, ylabel=$p$, axis lines=middle,
+                 xmin=-1.5, xmax = 1.5, ymin = -0.5, ymax = 1.5, xtick = {-1,1},
+                 xticklabels = {$-A$, $A$}, ytick = {1}, yticklabels = {$0.5$}]
+      \draw [-*] (axis cs:-1,0) -- (axis cs:-1,1);
+      \draw [-*] (axis cs: 1,0) -- (axis cs: 1,1);
+    \end{axis}
+  \end{tikzpicture} 
+  \item Zweidimensionale (diskrete) Amplitudenverteilung: $p_{XX}(x_1, x_2)$. 
+  {\color{cRed}Rot}: $\tau = 0$, {\color{cBlue}Blau}: $\tau > T_p$, dazwischen linearer Anstieg. 
+  Danach muss die AFK berechnet werden: $\fmm R_{XX}(\tau) = \sum_i \sum_j x_i \cdot x_j \cdot p_{XX}(x_i, x_j)$
+  
+  \begin{tikzpicture}[x=1cm,y=1cm,z=0.5cm,>=stealth]
+    % The axes
+    \draw[->] (xyz cs:x=-1.5) -- (xyz cs:x=1.5) node[above] {$x_1$};
+    \draw[->] (xyz cs:y=-0.5) -- (xyz cs:y=1.5) node[right] {$p$};
+    \draw[->] (xyz cs:z=-1.5) -- (xyz cs:z=1.5) node[above] {$x_2$};
+
+    \draw[dashed] (xyz cs:x=-1,z=1) -- (xyz cs:x=-1,z=-1) -- (xyz cs:x=1,z=-1) -- (xyz cs:x=1,z=1) -- (xyz cs:x=-1,z=1);
+    \draw[draw = cRed, -*] (xyz cs:x=-1,z=-1) -- (xyz cs:x=-1,y=1,z=-1) node[above]{$0.5$};
+    \draw[draw = cRed, -*] (xyz cs:x= 1,z= 1) -- (xyz cs:x= 1,y=1,z= 1) node[above]{$0.5$};
+
+  \end{tikzpicture}
+  \begin{tikzpicture}[x=1cm,y=1cm,z=0.5cm,>=stealth]
+    % The axes
+    \draw[->] (xyz cs:x=-1.5) -- (xyz cs:x=1.5) node[above] {$x_1$};
+    \draw[->] (xyz cs:y=-0.5) -- (xyz cs:y=1.5) node[right] {$p$};
+    \draw[->] (xyz cs:z=-1.5) -- (xyz cs:z=1.5) node[above] {$x_2$};
+
+    \draw[dashed] (xyz cs:x=-1,z=1) -- (xyz cs:x=-1,z=-1) -- (xyz cs:x=1,z=-1) -- (xyz cs:x=1,z=1) -- (xyz cs:x=-1,z=1);
+    \draw[draw = cBlue, -*] (xyz cs:x=-1,z=-1) -- (xyz cs:x=-1,y=0.5,z=-1) node[above]{$0.25$};
+    \draw[draw = cBlue, -*] (xyz cs:x= 1,z= 1) -- (xyz cs:x= 1,y=0.5,z= 1) node[above]{$0.25$};
+    \draw[draw = cBlue, -*] (xyz cs:x=-1,z= 1) -- (xyz cs:x=-1,y=0.5,z= 1) node[above]{$0.25$};
+    \draw[draw = cBlue, -*] (xyz cs:x= 1,z=-1) -- (xyz cs:x= 1,y=0.5,z=-1) node[above]{$0.25$};
+
+  \end{tikzpicture}
+  \begin{tikzpicture}
+    \begin{axis}[width=5cm, height=3cm, xlabel=$\tau$, ylabel=$R_{xx}$, axis lines=middle,
+                 xmin=-1.5, xmax = 1.5, ymin = -0.5, ymax = 1.5, xtick = {-1,1},
+                 xticklabels = {$-T_p$, $T_p$}, ytick = {1}, yticklabels = {$A^2$}]
+      \draw [draw = cRed, thick] (axis cs:-1.5,0) -- (axis cs:-1,0) -- (axis cs:0,1) -- (axis cs:1,0) -- (axis cs:1.5,0);
+    \end{axis}
+  \end{tikzpicture}
+  \item $\mathcal{F}(R_{XX}(\tau)) \Rightarrow S_{XX}(\omega)$ 
+  
+\end{enumerate}
+
+\section{Rauschen in analogen Kommunikationssystemen:}
+
+\begin{tikzpicture}[auto, node distance=3cm,>=latex', scale=0.7, every node/.style={transform shape}]
+  \node [input, name=input] {};
+  \node [block, right of=input] (transmitter) {transmitter};
+  \node [block, right of=transmitter] (channel) {Channel};
+  \node [sum, right of=channel, node distance = 3cm] (summation) {$\sum$};
+  \node [input, above of=summation, node distance = 1cm, name=noise] {};
+  \node [block, right of=summation] (filter) {Band Filter};
+  \node [block, right of=filter] (detector) {Detector};
+  \node [output, right of=detector] (output) {};
+
+  \draw [->] (input) -- node[name=x] {$X(t)$} (transmitter);
+  \draw [->] (transmitter) -- node[name=xc]{$X_c(t)$} (channel);
+  \draw [->] (channel) -- node[name=yc]{$Y_c(t)$} (summation);
+  \draw [->] (noise) -- node[name=n]{$N(t)$} (summation);
+  \draw [->] (summation) -- (filter);
+  \draw [->] (filter) -- node[name=yi]{$Y_i(t)$} (detector);
+  \draw [->] (detector) -- node[name=yo]{$Y_o(t)$} (output);
+\end{tikzpicture}
+
+Das \begin{definition}Rauschsignal $N(t)$\end{definition} ist ein stationärer und ergodischer
+Zufallsprozess, welcher mit $X(t)$ unkorreliert ist. Ausserdem gilt: $E[N(t)] = 0, \quad E[X(t) \cdot N(t)] = 0$. 
+Der Frequenzgang $S_{nn}(\omega) = \frac{\eta}{2}$.
+
+Das Nachrichtensignal ist ein \begin{definition}Zufallsprozess $X(t)$\end{definition} mit 
+$\abs{X(t)} \leq 1$, bzw. $\abs{x_\lambda(t)} \leq 1$ für alle $\lambda$ des Ereignisraums 
+$s$. Die \begin{definition}Leistung $S_X$\end{definition} $= S_X(t) = E[X^2(t)] \leq 1$. 
+Ausserdem ist das Signal $X(t)$ bandbeschränkt mit der 
+\begin{definition}Bandbreite $B$\end{definition}.
+
+\cdef{Addititive white gaussian noise: AWGN}
+
+\begin{footnotesize}
+\begin{tabular}{|c|c|c|c|}
+  \hline
+   & \textbf{Baseband} & \textbf{DSB-SC} & \textbf{AM} \\ \hline
+  Eingangsnutzsignal $X_i(t)$ & 
+  $X(t)$ & $X(t) \cdot A_c \cdot \cos(\omega_c t)$ & $A_c (1 + \mu X(t)) \cos(\omega_c t)$ \\\hline
+  Leistung $S_i$ von $X_i(t)$ & $S_x$ & $\frac{1}{2} \cdot A_c^2 \cdot S_x$ & 
+  $\frac{1}{2}A_c^2 (1 + \mu^2 S_x)$ \\ \hline
+  Bandbreite von $X_i(t)$ & $B$ & $2B$ & $2B$ \\ \hline
+  Leistung $S_{Ni}$ von $N_i(t)$ & $\eta B$ & $2 \eta B$ & $2 \eta B$ \\ \hline
+  $\text{SNR}_i$ & $\fmm \frac{S_i}{\eta B}$ & $\fmm \frac{A_c^2 S_x}{4 \eta B}$ & 
+  $\fmm \frac{A_c^2 (1 + \mu^2 S_x)}{4 \eta B}$ \\ \hline
+  Ausgangsnutzsignal $X_o(t)$ & $X(t)$ & $A_c \cdot X(t)$ & $A_c \cdot \mu \cdot X(t)$ \\ \hline
+  Leistung $S_o$ von $X_o(t)$ & $S_X$ & $A_c^2 S_x$ & $A_c^2 \cdot \mu^2 \cdot S_X$ \\ \hline
+  Leistung $S_{No}$ von $N_o(t)$ & $\eta B$ & $2 \eta B$ & $2 \eta B$ \\ \hline
+  $\text{SNR}_o$ & $\fmm \frac{S_i}{\eta B}$ & $\fmm \frac{A_c^2 S_X}{2 \eta B}$ & 
+  $\fmm \frac{A_c^2 \mu^2 S_X}{2 \eta B}$ \\ \hline
+  $\text{SNR}_o$ mit $\gamma$ & $\gamma$ & $\gamma$ & $\frac{\mu^2 S_X}{1 + \mu^2 S_X} 
+  \cdot \gamma$ \\ \hline 
+\end{tabular} 
+
+\begin{tabular}{|c|c|c|}
+  \hline & \textbf{PM} & \textbf{FM} \\ \hline
+  Eingangsnutzsignal $X_i(t)$ & $A_c \cdot \cos(\omega_c t + k_p \cdot X(t)) \quad$ & 
+  $A_c \cos(\omega_c t + k_f \int_{-\infty}^t X(\tau) d\tau)$ \\\hline
+  Leistung $S_i$ von $X_i(t)$ & $\frac{1}{2} A_c^2$ & $\frac{1}{2} A_c^2$ \\ \hline
+  Bandbreite von $X_i(t)$ & $2(D + 1)B$ & $2(D + 1) B$ \\ \hline
+  Leistung $S_{Ni}$ von $N_i(t)$ & $2(D + 1)\eta B$ & $2(D + 1) \eta B$ \\ \hline
+  Ausgangsnutzsignal $X_o(t)$ & $\fmm \frac{A_c^2}{4(D+1)\eta B}$ & 
+  $\fmm \frac{A_c^2}{4(D+1)\eta B}$ \\ \hline
+  Leistung $S_o$ von $X_o(t)$ & $k_p \cdot X(t)$ & $k_f <cdot X(t)$ \\ \hline
+  $\text{SNR}_i$ & $k_p^2 S_X$ & $k_f^2 S_X$ \\ \hline
+  Leistung $S_{No}$ von $N_o(t)$ & $\fmm \frac{2}{A_c^2} \eta B$ & 
+  $\fmm \frac{2(2\pi B)^2}{3A_c^2} \eta B$ \\ \hline
+  $\text{SNR}_o$ & $\fmm \frac{k_p^2 A_c^2 S_x}{2 \eta B}$ & 
+  $\fmm \frac{3 D^2 A_c^2 S_X}{2 \eta B}$ \\ \hline
+  $\text{SNR}_o$ mit $\gamma$ & $k_p^2 \cdot S_x \cdot \gamma $ & 
+  $3 D^2 \cdot S_X \cdot \gamma$ \\ \hline
+\end{tabular}
+\end{footnotesize}
+
+
+\subsection{Rauschen bei Winklemodulierten Systemen}
+
+Bei den PM- / FM-Systemen gilt für das \cdef{Hubverhältnis $D$} $ = \frac{\Delta f}{B_m} = \frac{\delta \omega}{W_m}$ 
+
+\begin{tabular}{c}
+  $\fmm Y_i(t) = A_c \cos(\omega_c t + \varphi(t)) + n_i(t) \quad \text{mit} \quad S_i = \frac{1}{2} A_c^2$ \\
+  $\fmm \varphi_{PM} = k_p \cdot X(t) \qquad \varphi_{FM}(t) = k_f \int_{-\infty}^t X(\tau) d\tau$\\
+  $\fmm Y_{o_{PM}}(t) = \Theta(t) = k_p X(t) + \frac{n_s(t)}{A_c} \qquad Y_{o_{FM}}(t) = \frac{d\Theta(t)}{dt} = k_f X(t) + \frac{n_s(t)}{A_c}$
+\end{tabular}
+
+
+\subsection{Additive White Gaussian Noise AWGN}
+Beispiel: thermisches Rauschen von Wiederständen. \cdef{$S_{XX}(\omega)$: Spektrale Leistung}, \cdef{$B$: Bandbreite des Rauschen}.
+$$S_{XX}(\omega) = \frac{\eta}{2}, \qquad R_{XX}(\tau) = \frac{\eta}{2} \cdot \delta(\tau), \qquad \eta = \frac{\sigma^2}{B}$$
+
+\subsection{Farbige Rauschsignale}
+\begin{tabular}{ll}
+  {Pink noise}: $S_{XX}(\omega) = c \cdot \frac{1}{\omega}$ & 
+  {Brown noise}: $S_{XX}(\omega) = c \cdot \frac{1}{\omega^2}$ \\
+  {Blue noise}: $S_{XX}(\omega) = c \cdot \omega$ & 
+  {Purple noise}: $S_{XX}(\omega) = c \cdot \omega^2$ 
+\end{tabular}
+
+\section{Optimaler Detektor}
+Der Empfänger soll so optimiert werden, dass er den übertragenen degitalen Datenstrom 
+die Bitfehlerrate $P_e$ minimiert. Also muss die Signal-Noise-Ratio klein sein. Das \cdef{Rauschsignal $n(t)$} 
+ist ein Mittelwertfreies AWGN (additive white gaussian noise). der Abtaster erzeugt das diskrete Signal 
+$z(nT) = a_i(nT) + n_0(nT)$ (zu en Zeitpunkten $nT$). 
+
+\begin{center}\begin{tikzpicture}[auto, node distance=3cm,>=latex', scale=0.7, every node/.style={transform shape}]
+  \node [input, name=input] {};
+  \node [sum, right of=input, node distance = 2cm] (summation) {$\sum$};
+  \node [input, above of=summation, node distance = 1cm, name=noise] {};
+  \node [block, right of=summation] (filter) {Linear Filter};
+  \node [block, right of=filter] (switch) {SW};
+  \node [block, right of=switch] (comparator) {Komparator};
+  \node [output, right of=comparator] (output) {};
+
+  \draw [->] (input) -- node[name=s] {$s_i(t)$} (summation);
+  \draw [->] (noise) -- node[name=n] {$n(t)$} (summation);
+  \draw [->] (summation) -- node[name=r] {$r(t)$} (filter);
+  \draw [->] (filter) -- node[name=z] {$z(t)$} (switch);
+  \draw [->] (switch) -- node[name=znt]{$z(nT)$} (comparator);
+  \draw [->] (comparator) -- node[name=yo]{$y(t)$} (output);
+\end{tikzpicture} \end{center}
+
+$$s_i(t) = \left\{ \begin{array}{lll} s_1(t) & 0 \leq t \leq T & \text{for binary 1} \\ 
+s_2(t) & 0 \leq t \leq T & \text{for binary 0}\end{array} \right. \quad r(t) = s_i(t) + n(t)$$
+
+\subsection{Detektor}
+Der Detektor entscheidet durch eine Schätzung, welches Signal höchstwahrscheinlich gesendet wurde.
+bei Soft-Descision wird anstatt fester Entscheidung eine W'keit für die beiden Symbolwerte bestimmt
+und verarbeitet.
+
+$$\begin{array}{ll}
+  \text{Hypothese } H_1 \text{ (falls } z(nT) > \lambda \text{ ):} & s_1 \text{ wurde gesendet} \\
+  \text{Hypothese } H_1 \text{ (falls } z(nT) < \lambda \text{ ):} & s_2 \text{ wurde gesendet} \\
+\end{array}
+$$
+
+Ein \cdef{Bitfehler} ist, wenn das falsche Bit erkannt wird. Bei Soft-Descision bildet die 
+W'keit ein Anhaltspunkt für mögliche Bitfehler. bei Hard-Descision kann mit folgender 
+Fehlerw'keit gerechnet werden:
+$$P_e = P(H_2 | s_1) <cdot P(s_1) + P(H_1 | s_2) \cdot P(s_2)$$
+$$P_e = \frac{1}{2} \left[ P(H_2 | s_1) + p(H_1 | s_2) \right], \quad \text{wenn: } P(s_1) = P(s_2) = \frac{1}{2} $$
+
+\subsection{Maximum Likelihood Detector}
+
+\cdef{$z(nT)$} sei die Verteilung in Funktion von $s_1$ und $s_2$. 
+
+$$\begin{array}{ll}
+\text{Hypothese } H_1: & \Lambda(z) = \frac{f(z|s_1)}{f(z|s_2)} > \frac{P(s_2)}{P(s_1)} \\
+\text{Hypothese } H_2: & \Lambda(z) = \frac{f(z|s_1)}{f(z|s_2)} < \frac{P(s_2)}{P(s_1)} \\
+\end{array}$$
+
+Beim vereinfachten ML Detector wird vorausgesetzt, dass $P(s_1) = P(s_2) = \frac{1}{2}$. Somit wird
+$\frac{P(s_2)}{P(s_1)} = 1$.
+
+\subsection{Beispiel: verrauschtes NRZ-Signal}
+ein Signal $s$ mit den beiden möglichen Werten $s_1 = a_1, s_2 = a_2$ wird durch ein weisses Rauschen 
+verfälscht:
+$$f_{n_0}(\xi) = \frac{1}{\sqrt{2\pi} \sigma_{n_0}} \cdot e^{\frac{-\xi^2}{2 \sigma_{n_0}^2}} $$
+
+$$\Longrightarrow f(z|s_1) = \frac{1}{\sqrt{2\pi} \sigma_{n_0}} \cdot e^{\frac{-(z-a_1)^2}{2\sigma_{n_0}^2}}, 
+\qquad f(z|s_2) = \frac{1}{\sqrt{2\pi} \sigma_{n_0}} \cdot e^{\frac{-(z-a_2^2}{2\sigma_{n_0}^2}}$$
+
+Somit ist die Wahrscheinlichkeit, dass die falsche Hypothese gewählt wird:
+
+$$P(H_1|s_1) = \int_{-\infty}^{\lambda_0} f(z|s_1) dz, \qquad
+P(H_1|s_1) = \int_{-\infty}^{\lambda_0} f(z|s_1) dz$$
+
+Mit den Vereinfachungen, dass $P(s_1) = P(s_2) = 0.5$ und $\lambda_0 = \frac{a_1 + a_2}{2} $, dann ist 
+die Wahrscheinlichkeit \cdef{$P_e$}, dass die falsche Hypothese gewählt wurde: 
+$$P_e = Q\left(\frac{a_1-a_2}{2 \sigma_{n_0}}\right)$$
+
+\subsection{Matched Filter}
+
+Das \cdef{Lineare Filter $H(\omega)$} soll die Fehler-WSK zum \cdef{Zeitpunkt $T$} minimieren. 
+
+\begin{tabular}{ll}
+  \begin{tabular}{ll}
+    \cdef{$H(\omega)$} & \cdef{Übertragungsfunktion des Filters} \\
+    \cdef{$s(t)$} & \cdef{Differenzsignal $s_1 - s_2$}\\
+    \cdef{$a_1$, $a_2$} & \cdef{Signalwerte von $s_1, s_2$} \\
+    \cdef{$S(\omega)$} & \cdef{Spektrale Leistung des Signals} \\
+    \cdef{$E_d$} & \cdef{Energie des Differenzsignals $s(t)$}\\
+    \cdef{$P_e$} & \cdef{Fehlerwahrscheinlichkeit} \\
+  \end{tabular} &
+  
+  \begin{tabular}{c}
+    $\fmm H(\omega) = S^\ast(\omega) \cdot e^{-j \omega T}$ \\
+    $\fmm \vLaplace$ \\
+    $\fmm h(t) = \left\{ \begin{array}{ll} s(T-t) & 0 \leq t \leq T \\ 0 & \text{sonst} \end{array} \right.$ \\
+    $\fmm \left(\frac{S}{N}\right)_{o_{max}} = \frac{(a_1 - a_2)^2}{\sigma_{n_0}^2} = \frac{2E_d}{\eta}$ \\
+    $\fmm E_d = \int_0^T \left[ s_1(t) - s_2(t) \right]^2 dt$ \\
+    $\fmm P_e = Q\left(\frac{a_1 - a_2}{2 \sigma_{n_0}}\right) = Q\left(\sqrt{\frac{E_d}{2\eta}}\right)$
+  \end{tabular}
+\end{tabular}
+
+\subsubsection{Variante zum matched-Filter: Korrelator}
+zum Sample Zeitpunkt $t = T$ ist die Antwort $z(t)$ eines Matched Filters und diejenigen eines \textbf{Korrelators} identisch. 
+ein Korrelator multipliziert zwei Signale $s(t)$ und $r(t)$ und integriert das Resultat. 
+$$\underbrace{z(t) = r(t) \ast h(t) = \int_0^t r(\tau) h(t-\tau) d\tau}_{\text{Matched Filter}} = \underbrace{\int_0^t r(\tau) s(T - (t-\tau)) d\tau}_{\text{Korrelator}} \overbrace{=}^{t=T} \int_0^T r(\tau) s(\tau) d\tau$$
+
+\section{Informationen}
+\begin{itemize}
+  \item \textbf{Information} (mathematische Betrachtung): Antwort auf eine konkrete Fragestellung. Die 
+  Fragen können geschickter gestellt werden, um die Anzahl der Fragen zu minimieren. Fragen sind dann 
+  geschickt gewählt, wenn bei wiederholtem Zufallsexperiment im Schnitt die anzahl Fragen minimal ist.
+  Bei binärer Sichtweise sind Fragen dann optimal, wenn sie \textbf{mit 50\% Wahrscheinlichkeit} mit Ja oder
+  Nein beantwortet werden. So werden wahrscheinliche Ergebnisse mit wenigen Fragen gefunden.
+  \item \textbf{DMS}: Discrete memoryless source (jedes neue Symbol ist unabhängig von vorhergehenden Symbolen).
+  \item \textbf{DMC}: Discrete memoryless Channel (der Ausgang $Y_i$ ist nur abhängig von $X_i$, und nicht von $X_k$, $k \neq i$).
+\end{itemize}
+
+\subsection{Mathematische Beschreibung}
+\begin{tabular}{ll|ll}
+  \cdef{$I(X_i)$} & \cdef{Informationsgehalts des Ereignis $X_i$} &
+  \cdef{$R(X)$} & \cdef{Redundanz der Quelle X} \\
+  \cdef{$H(X)$} & \cdef{Entropie des Alphabets einer Quelle $X$} &
+  \cdef{$r$} & \cdef{Symbolrate}\\
+  \cdef{$m$} & \cdef{Grösse des Alphabets in anz. Zeichen}&
+  \cdef{$R$} & \cdef{Informationsrate}\\
+\end{tabular}
+
+\begin{center}
+\begin{tabular}{c}
+  $I(X_i) = -\log_2{P(X_i)}$ \\
+  $I(X_i) \geq 0$ \\
+  $I(X_i) > I(X_k), \quad \text{wenn } P(X_i) < P(X_k)$ \\
+  $I(X_i, X_k) = I(X_i) + I(X_k), \quad \text{wenn } X_i, X_k \text{ statistisch unabhängig}$ \\
+  $\fmm H(X) = E[I(X_i)] = \sum_i P(X_i) \cdot I(X_i) = - \sum_i P(X_i) \cdot \log_2{ P(X_i)}$ \\
+  $0 \leq H(X) \leq \log_2{m} \qquad \text{für binäre Quellen: } 0 \leq H(X) \leq 1$ \\
+  $H_{max}(X) = \log_2{m}$ \\
+  $\fmm R(X) = H_{max}(X) - H(X) = \log_2{m} + \sum_i P(X_i) \cdot \log_2{P(X_i)}$
+  $R = r \cdot H(X)$
+\end{tabular}
+\end{center}
+
+\subsection{Kanaldarstellung}
+
+Die \cdef{Kanalmatrix} gibt für jedes gesendete Symbol $x_i$ die bedingte Wahrscheinlichkeit 
+$P(y_i|y_i)$ an, dass der Empfänger ein $y_i$ dedektiert. 
+
+$$[P(Y|X)] = \left[ \begin{array}{cccc} 
+  P(y_1|x_1) & P(y_1|x_1) & \ldots & P(y_n|x_1) \\
+  P(y_1|x_2) & P(y_1|x_2) & \ldots & P(y_n|x_2) \\
+  \vdots & \vdots & \ddots & \vdots \\
+  P(y_1|x_m) & P(y_1|x_m) & \ldots & P(y_n|x_m) \\
+\end{array} \right]$$
+
+Die \cdef{Verbundsmatrix} gibt die Wahrscheinlichkeiten von sämtlichen Kombinationen von gesendeten 
+und empfangenen Symbolen $X_i$ und $Y_i$ an.
+
+$$[P(Y,X)] = \left[ \begin{array}{cccc} 
+  P(y_1,x_1) & P(y_2,x_1) & \ldots & P(y_n,x_1) \\
+  P(y_1,x_2) & P(y_2,x_2) & \ldots & P(y_n,x_2) \\
+  \vdots & \vdots & \ddots & \vdots \\
+  P(y_1,x_m) & P(y_2,x_m) & \ldots & P(y_n,x_m) \\
+\end{array} \right]$$
+
+\begin{center}
+\begin{tabular}{cc}
+  
+  \begin{tabular}{l}
+    \textbf{Verlustloser Kanal}: \\
+    $[P(Y|X)] = \left[ \begin{array}{ccccc} 
+      \frac{3}{4} & \frac{1}{4} & 0 & 0 & 0\\
+      0 & 0 & \frac{1}{3}& \frac{2}{3} & 0 \\
+      0 & 0 & 0 & 0 & 1 \\
+    \end{array} \right]$
+  \end{tabular} &
+  \begin{tabular}{l}
+    \begin{tikzpicture}[>=latex, scale=0.6]
+      \draw (0,2) node[left] {$x_1$};
+      \draw (0,1) node[left] {$x_2$};
+      \draw (0,0) node[left] {$x_3$};
+      \draw [*-*] (0,2) -- (3,3) node[right] {$y_1$};
+      \draw [->] (0,2) -- (1.5,2.5) node[above, yshift=-0.5mm] {\scriptsize $3/4$};
+      \draw [-*] (0,2) -- (3,2) node[right] {$y_2$};
+      \draw [->] (0,2) -- (1.5,2) node[above right, yshift=-0.5mm] {\scriptsize $1/4$};
+      \draw [*-*] (0,1) -- (3,1) node[right] {$y_3$};
+      \draw [->] (0,1) -- (1.5,1) node[above, yshift=-0.5mm] {\scriptsize $1/3$};
+      \draw [-*] (0,1) -- (3,0) node[right] {$y_4$};
+      \draw [->] (0,1) -- (1.5,0.5) node[above right, yshift=-1mm] {\scriptsize $2/3$};
+      \draw [*-*] (0,0) -- (3,-1) node[right] {$y_2$};
+      \draw [->] (0,0) -- (1.5,-0.5) node[above, yshift=-0.5mm] {\scriptsize $1$};
+    \end{tikzpicture}
+  \end{tabular} \\
+  
+  \midrule
+  
+  \begin{tabular}{l}
+    \textbf{Deterministischer Kanal}: \\
+    $[P(Y|X)] = \left[ \begin{array}{ccc} 
+      1 & 0 & 0 \\
+      1 & 0 & 0 \\
+      0 & 1 & 0 \\
+      0 & 1 & 0 \\
+      0 & 0 & 1 \\
+    \end{array} \right]$
+  \end{tabular} &
+  \begin{tabular}{l}
+    \begin{tikzpicture}[>=latex, scale=0.6]
+      \draw (0,4) node[left] {$x_1$};
+      \draw (0,3) node[left] {$x_2$};
+      \draw (0,2) node[left] {$x_3$};
+      \draw (0,1) node[left] {$x_4$};
+      \draw (0,0) node[left] {$x_5$};
+      \draw [*-*] (0,4) -- (3,3) node[right] {$y_1$};
+      \draw [->] (0,4) -- (1.5,3.5) node[above, yshift=-0.5mm] {\scriptsize $1$};
+      \draw [*-] (0,3) -- (3,3);
+      \draw [->] (0,3) -- (1.5,3) node[above left, yshift=-0.5mm] {\scriptsize $1$};
+      \draw [*-*] (0,2) -- (3,2) node[right] {$y_2$};
+      \draw [->] (0,2) -- (1.5,2) node[above, yshift=-0.5mm] {\scriptsize $1$};
+      \draw [*-] (0,1) -- (3,2);
+      \draw [->] (0,1) -- (1.5,1.5) node[above left, yshift=-1mm] {\scriptsize $1$};
+      \draw [*-*] (0,0) -- (3,1) node[right] {$y_2$};
+      \draw [->] (0,0) -- (1.5,0.5) node[above, yshift=-0.5mm] {\scriptsize $1$};
+    \end{tikzpicture}
+  \end{tabular} \\
+  
+  \midrule
+  
+  \begin{tabular}{l}
+    \textbf{Rauschfreier Kanal}: \\
+    $[P(Y|X)] = \left[ \begin{array}{cccc} 
+      1 & 0 & 0 & 0\\
+      0 & 1 & 0 & 0 \\
+      0 & 0 & 1 & 0 \\
+      0 & 0 & 0 & 1 \\
+    \end{array} \right]$
+  \end{tabular} &
+  \begin{tabular}{l}
+    \begin{tikzpicture}[>=latex, scale=0.6]
+      \draw (0,3) node[left] {$x_1$};
+      \draw (0,2) node[left] {$x_2$};
+      \draw (0,1) node[left] {$x_3$};
+      \draw (0,0) node[left] {$x_4$};
+      \draw [*-*] (0,3) -- (3,3) node[right] {$y_1$};
+      \draw [->] (0,3) -- (1.5,3) node[above, yshift=-0.5mm] {\scriptsize $1$};
+      \draw [*-*] (0,2) -- (3,2) node[right] {$y_2$};
+      \draw [->] (0,2) -- (1.5,2) node[above, yshift=-0.5mm] {\scriptsize $1$};
+      \draw [*-*] (0,1) -- (3,1) node[right] {$y_3$};
+      \draw [->] (0,1) -- (1.5,1) node[above, yshift=-0.5mm] {\scriptsize $1$};
+      \draw [*-*] (0,0) -- (3,0) node[right] {$y_4$};
+      \draw [->] (0,0) -- (1.5,0) node[above, yshift=-0.5mm] {\scriptsize $1$};
+    \end{tikzpicture}
+  \end{tabular} \\
+  \midrule
+  
+  \begin{tabular}{l}
+    \textbf{Binärer symmetrischer Kanal}: \\
+    $[P(Y|X)] = \left[ \begin{array}{cc} 
+      (1-p) & p \\
+      p & (1-p) \\
+    \end{array} \right]$
+  \end{tabular} &
+  
+  \begin{tabular}{l}
+    \begin{tikzpicture}[>=latex, scale=0.6]
+      \draw (0,2) node[left] {$x_1$};
+      \draw (0,0) node[left] {$x_2$};
+      \draw [*-*] (0,2) -- (3,2) node[right] {$y_1$};
+      \draw [->] (0,2) -- (1.5,2) node[below, yshift=   1mm] {\scriptsize$(1-p)$};
+      \draw [->] (0,0) -- (1.5,0) node[below, yshift= 0.5mm] {\scriptsize$(1-p)$};
+      \draw [*-*] (0,0) -- (3,0) node[right] {$y_2$};
+      \draw (0,2) -- (3,0);
+      \draw (0,0) -- (3,2);
+      \draw [->] (0,2) -- (2,2/3) node[above,right, yshift=0.5mm] {\scriptsize$p$};
+      \draw [->] (0,0) -- (1,2/3) node[above,left, yshift=0.5mm] {\scriptsize$p$};
+    \end{tikzpicture}
+  \end{tabular} \\
+\end{tabular}
+\end{center}
+
+\subsection{Bedingte Entropie}
+\begin{itemize}
+  \item \cdef{$H(Y|X)$} ist der Informationsbedarf, um aus gesendetem X das empfangene Y zu bestimmen.
+  \item \cdef{$H(X|Y)$} ist der Informationsbedarf um aus empfangenem Y das gesendete X zu bestimmen.
+        (Information aus dem Empfänger, welche notwendig ist, um zu wissen, was gesendet wurde.)
+  \item \cdef{$H(X,Y)$: die Verbundsentropie} ist die Information des gesamten Kommunikationskanals. 
+  Das ist der Informationsgehalt der gesendeten und Empfangenen Symbole, sowie deren Beziehung zueinander.
+  \item \cdef{$I(X,Y)$} ist die Information, welche vom Eingang zum Ausgang des Kanals transferiert wird.
+\end{itemize}
+
+\begin{center}
+  \begin{tikzpicture} [scale=0.8, transform shape]
+    \draw (-1,2) -- (-0.5,1.5) node[left, xshift = -2mm]{$H(X)$} -- (-1,1) -- (1,1) -- (0.5,0.5) --
+          (0.75,0.5) node[below left]{$H(Y|X)$} -- (0.75,0.25) -- (1.25,0.75) -- (5,0.75) --
+          (5.5,1.25) node[right]{$H(Y)$} -- (5,1.75) -- (3,1.75) -- (3.5,2.25) --
+          (3.5,2.5) node[above right, yshift=-2mm]{$H(X|Y)$} -- (3.25,2.5) -- (2.75,2) -- (-1,2);
+
+    \draw [>=latex, <->](2,0.75) -- node[right]{$H(X,Y)$} (2,2);
+    \draw [dashed] (3,1.75) -- (0,1.75);
+    \draw [>=latex, <->](0,1) -- node[right]{$I(X,Y)$} (0,1.75);
+  \end{tikzpicture}
+\end{center}
+
+$$H(X,Y) = H(X|Y) + H(Y) = H(Y|X) + H(X)$$
+$$I(X,Y) = H(X) - H(X|Y) = H(Y) - H(Y|X) = I(Y,X)$$
+$$I(X,Y) = H(X) + H(Y) - H(X,Y)$$
+
+\subsection{Kanalkapazität}
+Die \cdef{Kanalkapazität $C_s$, $C$} ist die W'keitsverteilung von $X$, welche den Informationsfluss über den 
+Kanal maximiert. Dabei ist da Eingangs- und Ausgangsalphabet, sowie die Kanalmatrix $P(Y|X)$ gegeben. Hier ist 
+\cdef{$r$: Symbolrate}
+
+$$C = r \cdot C_s = r \cdot \max I(X,Y)$$
+
+\section{Quellenkodierung}
+\begin{itemize}
+  \item \textbf{Fixed Length Code}: Jedes Codewort hat die gleiche Länge (Bsp: ASCII-Code)
+  \item \textbf{Variable Length Code}: Je nach häufigkeit wird die Länge der Codewörter bestummen (Bsp: 
+        Morse, Shannon-Fano, Huffmann)
+  \item \textbf{Prefix-Free Code}: Kein codewort ist Präfik eines anderen Codeworts (Bsp: Shannon-Fano, Huffman)
+  \item \textbf{Uniquely Decodable Code}: Eine Kette von Codewörtern kann eindeutig wieder in die ursprüngliche 
+        Symbolfolge zurückgewandelt werden.
+  \item \textbf{Instantaneous Code}: Eindeutig decodierbarer Code, welcher nach dem Empfangen jedes einzelnen
+        Codeworts sofort ein einduetiges Symbol liefert, ohne dass nachfolgende Symbole decodiert werden müssen.
+\end{itemize}
+
+\subsection{Optimaler Code}
+Jeder Instantaneous Code, welcher eine minimale Codelänge besitzt, ist ein optimaler Code. 
+
+\begin{tabular}{ll}
+  \begin{tabular}{ll}
+    \cdef{$L$} & \cdef{Mittlere Codelänge} \\
+    \cdef{$\eta$} & \cdef{Effizienz der Codierung} \\
+    \cdef{$R$} & \cdef{Redundanz der Codierung} \\
+  \end{tabular} &
+  \begin{tabular}{l}
+    $\fmm L = \sum_i  P(x_i) \cdot n_i \geq H(X)$ \\
+    $\fmm \eta = \frac{H(X)}{L}$ \\
+    $\fmm R = L - H(X)$
+  \end{tabular}
+\end{tabular}
+
+\subsection{Kraft'sche Ungleichung}
+Gegeben ist eine Quelle mit dem Alphabet ${x_i}, i = {1 \ldots n}$. Jedem Symbol $x_i$ wird eine Codelänge $n_i$ 
+zugewiesen. Die Kraft'sche Ungleichung besagt, dass ein eindeutig und sofort codierbarer binärer Code gefunden 
+werden kann, wenn:
+$$K = \sum_i 2^{-n_i} \leq 1$$
+
+\renewcommand{\arraystretch}{1}
+
+\subsubsection{Shannon-Fano Codierung}
+\begin{enumerate}
+  \item Symbole nach absteigender W'keit anordnen.
+  \item Mit Trennung 2 Teilmengen möglichst gleicher W'keit bilden
+  \item Obere Teilmenge 0, unterer Teilmenge 1 zuordnen
+  \item für jede Teilmenge Schritt 2 wiederholen.
+\end{enumerate}
+
+\subsection{Huffman Codierung}
+\begin{enumerate}
+  \item Symbole und Symbolgruppen nach absteigender W'keit anordnen.
+  \item Unterste zwei Symbole als Symbolgruppe zusammenfassen.
+  \item Weiter bei Schritt 1, bis nur noch zwei Symbolgruppen vorliegen.
+  \item Der Symbolgruppe mit grösserer W'keit 0, der anderen 1 zuordnen.
+  \item Letzte Reduktion rückgängig machen.
+  \item Weiter bei Schritt 4, biss für alle Einzelsymbole ein Codewort vorliegt.
+\end{enumerate}
+
+\renewcommand{\arraystretch}{1.5}
+
+\section{Kanalcodierung}
+Durch das Beifügen von geeigneter Redundanz wird die Fehlererkennund und Fehlerkorrektur
+ermöglicht. \cdef{$C_s$ [b / Symbol]: Kanalkapazitätm $H(X)$: Entropie des DMS}.
+
+\textbf{Theorem:} Falls $H(X) < C_s$ kann mit geeigneter Kanalcodierung die Fehlerrate der 
+Übertragung beliebig klein gemacht werden. Falls $H(X) > C_s$ist fehlerfreie Übertragung
+nicht möglich.
+
+Das heisst, dass Bitfehler in der Übertragung zu einer Beschränkung der nutzbaren 
+Übertragungsrate führen.
+
+\begin{ddtabular}
+  $\cn{d}, d(x)$ & Datenwort & 
+  $\cn{c}, c(x)$ & Codewort \\
+  $k$ & Länge des Datenwortes &
+  $n$ & Länge des Codewortes \\
+  $R_c = \frac{k}{n}$ & Coderate &
+  $m$ & Anzahl Symbole im Alphabet \\
+  $\cn{s}, s(x)$ & Fehlersyndrom &
+  $K = \{ 0 \: 1 \} $ & Zeichen im Alphabet \\
+  $\cn{c}_r, c_r(x)$ & Empfangenes Codewort &
+  $\cn{e}, e(x)$ & Error-pattern der Länge $n$\\
+\end{ddtabular}
+
+\subsection{Blockcodes}
+
+Der Eingangsdatenstrom wird in Blöcke unterteilt, welcher separat codiert wird. 
+
+Ein \textbf{Galois Körper} ist ein algebraischer Kérper mit endlich vielen Elementen. Wir
+beschränken uns auf den binären Fall: $M = {0, 1}$. Die Operation $\oplus$ (logisches XOR) und
+$\odot$ (logisches AND)
+
+$$\cn{a} = (a_1, a_2, \ldots, a_n) \quad \text{und} \quad \cn{b} = (b_1, b_2, \ldots, b_n) \quad \text{aus dem Code } C$$
+$$\cn{c} = \cn{a} \oplus \cn{b} = (a_1 \oplus b_1, a_2 \oplus b_2, \ldots, a_n \oplus b_n)$$
+
+\subsection{Linearer Code}
+
+Ein Code $C$ ist genau dann linear, wenn für alle $\cn{a}$ und $\cn{b}$ auch $\cn{c} = \cn{a} \oplus \cn{b}$
+zu $C$ gehört. 
+
+\begin{dtabular}
+  $w(\cn{c})$ & Hamming-Gewicht: anzahl Einer des Codewortes \\
+  $d(\cn{a}, \cn{b})$ & Hamming-Distanz : Anzahl unterschiedliche Stellen von $\cn{a}$ und $\cn{b}$\\
+  $d_{min}$ & Minimale Hamming-Distanz aller möglichen Codewort-paare \\
+\end{dtabular}
+
+$$w(\cn{c}) = d(\cn{c}, \cn{0}) \qquad d(\cn{a}, \cn{b}) = w(\cn{a} \oplus \cn{b})$$
+$$d_{min} = \min [ d(\cn{a}, \cn{b})] \stackrel{\text{linear}}{=} \min [ w(\cn{a} \oplus \cn{b})] = \min [w(\cn{c})]$$
+
+Anhand dieser minimalen Hammingdistanz $d_{min}$ lässt sich die Anzahl der korrigierbaren und detektierbaren Fehler berechnen:
+
+\begin{tabular}{ll}
+  \begin{dtabular}
+    $t_d$ & Detektierbare Fehler \\
+    $t_c$ & Korrigierbare Fehler \\
+  \end{dtabular} &
+  \begin{mtabular}{l}
+    $t_d = d_{min} - 1$ \\
+    $\fmm t_c=\frac{1}{2} \cdot (d_{min} - 1) $
+  \end{mtabular}
+\end{tabular}
+
+Bei \textbf{Systematischen Blockcodes} kommen alle Datenbits unmodifiziert im Codewort vor. 
+Falls diese Bits an einer definierten Stelle auftreten, handelt es sich um ein \textbf{geordneter systematischer Code}.
+
+\subsubsection{Generatormatrix $G$}
+\cdef{$I_k$ ist die Einheitsmatrix} und \cdef{$P^T$ die transponierte Paritätsmatrix}.
+
+$$\cn{c} = \cn{d} \odot G = \cn{d} \odot \left[ I_K \quad P^T \right]$$
+$$\cn{c} = \left[ \begin{array}{llll} d_1 & d_2 & \cdots & d_k \end{array} \right] \odot 
+  \left[ \begin{array}{llllllll} 
+    1 & 0 & \cdots & 0 & p_{11} & p_{21} & \cdots & p_{m1} \\
+    0 & 1 & \cdots & 0 & p_{12} & p_{22} & \cdots & p_{m2} \\
+    \vdots & \vdots & \ddots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+    0 & 0 & \cdots & 1 & p_{1k} & p_{2k} & \cdots & p_{mk} \\
+  \end{array} \right]
+$$
+
+\subsubsection{Praitätsprüfmatrix $H$}
+Mit dieser Matrix können Übertragungsfehler erkannt werden. $O$ ist die $[k \times m]$ 
+Nullmatrix, $\cn{0}$ ist der $[1 \times m]$ Nullvektor
+
+$$H = \left[ \begin{array}{ll} P & I_m \end{array} \right] \qquad H^T = 
+\left[ \begin{array}{l} P^T \\ I_m \end{array} \right]$$
+$$G \odot H^T = O \qquad \cn{c} \odot H^T = \cn{d} \odot G \odot H^T = \cn{0}$$
+$$\text{Wenn:} \: \cn{c} \odot H^T = 0 \: \rightarrow \: \text{keine Fehler bei der Übertragung}$$
+
+Die minimale Hamming-Distanz $d_{min}$ von $C$ entspricht somit der minimalen Anzahl Zeilen 
+von $H^T$, welche linear kombiniert den Nullvektor $\cn{0}$ ergeben. 
+\cdef{$\cn{c}_r$ ist das empfangene Codewort}, welches maximal \cdef{$t$ Fehler} haben kann, um das Codewort korrigieren zu können.
+
+$$\cn{c_r} = \cn{c} \oplus \cn{e}$$ 
+$$\cn{s} = \cn{c_r} \odot H^T = (\cn{c} \oplus \cn{e}) \odot H^T = \cn{c} \odot H^T \oplus \cn{e} \odot H^T = \cn{e} \odot H^T$$
+
+Bei Einzelfehler entspricht das Fehlersyndrom $\cn{s}$ genau einer Zeile von $H^T$. 
+Wenn alle Zeilen von $H^T$ unterschiedlich sind, kann aus $\cn{s}$ das Fehlerbit $e_i$ eindeutig bestimmt werden.
+So kann das empfangene Codewort $\cn{c_r}$ korrigiert werden. 
+
+$$2^{n-k} \geq \sum_{i=0}^t \binom{n}{i}$$
+
+Gilt das Gleichheitszeichen, handelt es sich um einen so genannten perfekten Code. 
+Ein perfekter Code, der nur Einzelfehler korrigieren kann, nennt man \cdef{Hamming-Code}.
+
+\subsection{Zyklische Lineare Codes}
+Jede Zyklische Verschiebung eines Codewortes $\cn{c}$ zu einem neuen gültigen Codewort von $C$ führt.
+Um hohe Coderate zu erzielen, sollte eine möglichst hohe Coderate $R_c = \frac{k}{n}$ erreicht werden
+Ein Codewort $\cn{c}$ kann als Polynom $c(x)$ geschrieben werden:
+
+$$\cn{c} = (c_0, \, c_1, \, c_2, \, \ldots \, c_{n-1}) \qquad c(x) = c_0 + c_1 x + c_2 x^2 + \ldots + c_{n-1} x^{n-1}$$
+
+Es werden folgende Operationen definiert:
+
+$$\mod_2(x^k + x^k) = x^k \oplus x^k = 0 \qquad \mod_2 (x^k - x^k) = x^k \ominus x^k = 0$$
+$$\mod_2(0+x^k) = 0 \oplus x^k = x^k \qquad \mod_2(0-x^k) = 0 - x^k = x^k$$
+
+$$\text{Beispiele:} \: 
+\begin{array}{ll}
+  \cn{a} = (1\,1\,0\,0\,0) & a(x) = 1 + x + x^2 \\
+  \cn{b} = (1\,0\,1\,1\,0) & b(x) = 1 + x^2 + x^3 \\
+\end{array}$$
+$$\cn{a} \odot \cn{b} = a(x) \cdot b(x) = 1 + x + 2x^2 + 2x^3 + 2x^4 + x^5 = 1 + x + x^5 \Rightarrow (1\,1\,0\,0\,1)$$
+
+Im Folgenden wird eine wichtige Operation beschrieben. 
+Für das Polynom $q(x)$ interessiert man sich meisst nicht.
+Normalerweise wird nach dem Rest $r(x)$ gesucht. $r(x)$ und $q(x)$.
+Die Operation $\oslash$ ist eine Polynomdivision.
+
+$$f(x) = q(x) \cdot h(x) + r(x) \qquad f(x) \oslash h(x) \: \Rightarrow \: q(x), \, r(x) $$
+$$\text{Notation:} \qquad r(x) = f(x) \: \mod h(x) $$
+
+Wenn ein Codewort $c$ um $i$ Stellen zyklisch verschoben wird: 
+$$\cn{c}^{(i)} = (c_{n-i},\,c_{n-(i-1)},\,\ldots,\,c_{n-1},\,c_0,\,c_1,\,\ldots,\,c_{n-(i+1)})$$
+$$c^{(i)}(x) = c_{n-i} + c_{n-(i-1)} x + \ldots + c_{n-1} x^{i-1} + c_0 x^i + c_1 x^{i-1} + \ldots + c_{n-(i+1)}x^{n-1}$$
+$$c^{(i)}(x) = x^i c(x) \: \mod \left(1+x^n\right)$$
+
+\subsubsection{Fundamentales Theorem für zyklische Codes}
+Gegeben sei das \cdef{Generatorpolynom $g(x)$} mit der Ordnung $(n-k)$. 
+Jeder $(n,\,k)$ zyklische Code $C$ kann mit Hilfe eines solchen Polynoms $g(x)$ gebildet werden:
+
+$$\text{\textbf{Bedingungen}:} \qquad g_{n-k} = g_0 = 1 \qquad (x^n + 1) = q(x) \odot g(x) \quad \text{(ohne Rest)}$$
+$$c(x) = d(x) \odot g(x)$$
+
+\subsubsection{Fehlersyndrom}
+Im empfangenen Codewort $c_r(x)$ muss der Fehler $e(x)$ gefunden werden. 
+Das Fehlersyndrom $s(x)$ ist ein Polynom des Grads $n-k$.
+
+$$c_r(x) = c(x) \oplus e(x)$$
+$$s(x) = r(x) \: \mod g(x)$$
+$$s(x) = e(x) \: \mod g(x)$$
+
+
+\subsubsection{Generatormatrix}
+$$G = \left(\begin{array}{c} g(x) \\ x \cdot g(x) \\ x^2 \cdot g(x) \\ \vdots \\ x^{k-1} \cdot g(x) \end{array}\right)$$
+
+
+\subsubsection{Hardware-Realisierung}
+\begin{dtabular}
+  Generatorpolynom & $g(x) = g_0 + g_1 x + g_2 x^2 + \ldots + g_{n-k} x^{n-k}$ \\
+  Datenwort & $d(x) = d_0 + d_1 x + d_2 x^2 + \ldots + d_{k-1} x^{k-1}$ \\
+  Parity Bits & $p(x) = p_0 + p_1 x + p_2 x^2 + \ldots + p_{n-k-1} x^{n-k-1}$ \\
+  Codewort & $c(x) = p_0 + \ldots + p_{n-k-1} x^{n-k-1} + d_0 x^{n-k} + \ldots + d_{k-1} x^{n-1}$ \\
+\end{dtabular}
+
+$$c(x) = q(x) \cdot g(x) = p(x) + x^{n-k} \cdot d(x)$$
+$$x^{n-k} \cdot d(x) = q(x) \cdot g(x) + p(x)$$
+
+
+\begin{tikzpicture}[auto, scale=0.6, transform shape, node distance=1.5cm]
+  %help lines
+  %\draw [draw=clGray, help lines, step=.1] (-1,-1) grid (10,2);
+  %\draw [draw=clGray, thick, help lines, step=1] (-1,-3) grid (18,4);
+  
+  %place nodes
+  \draw
+    node at (0,0) [block] (z1) {\Large $z^{-1}$}
+    node [sum, right of=z1] (sum1) {\large $+$}
+    node [block, right of=sum1] (z2) {\Large $z^{-1}$}
+    node [sum, right of=z2] (sum2) {\large $+$}
+    node [block, right of=sum2] (z3) {\Large $z^{-1}$}
+    node [sum, right of=z3] (sum3) {\large $+$}
+    node [block, right of=sum3] (z4) {\Large $z^{-1}$}
+    node at (11,0) (dots1) {\Large \ldots}
+    node at (11,3) (dots2) {\Large \ldots}
+    node at (13,0) [sum] (sum4) {\large $+$}
+    node [block, right of=sum4] (z5) {\Large $z^{-1}$} 
+    node at (17,0) [sum] (sum5) {\large $+$}
+    node at (-1,1.5) [block] (g0) {\Large $g_0$}
+    node [block, above of=sum1] (g1) {\Large $g_1$}
+    node [block, above of=sum2] (g2) {\Large $g_2$}
+    node [block, above of=sum3] (g3) {\Large $g_3$}
+    node [block, above of=sum4] (g4) {\Large $g_{n-k-1}$};
+    %node at (15,0) [] (input) {$d(x)$};
+    
+  %draw connectors
+  \draw [->] (g0)   |- (z1);
+  \draw [->] (z1)   -- (sum1);
+  \draw [->] (sum1) -- (z2);
+  \draw [->] (z2)   -- (sum2);
+  \draw [->] (sum2) -- (z3);
+  \draw [->] (z3)   -- (sum3);
+  \draw [->] (sum3) -- (z4);
+  \draw      (z4)   -- (dots1); 
+  \draw [->] (g1)   -- (sum1);
+  \draw [->] (g2)   -- (sum2);
+  \draw [->] (g3)   -- (sum3);
+  \draw [->] (dots2)-| (g3);
+  \draw [->] (dots2)-| (g2);
+  \draw [->] (dots2)-| (g1);
+  \draw [->] (dots2)-| (g0);
+  
+  \draw [->] (sum5) |- (15,3);
+  \draw [fill=black] (15,3) circle (1mm);
+  \draw [cRed, thick]  (15,3) -- ++ (150:1);
+  \draw [cBlue, thick] (15,3) -- ++ (175:1);
+  \draw [fill=black] (14,3) circle (1mm);
+  \draw [->] (14,3) -| (g4);
+  \draw (14,3) -- (dots2);
+  \draw [->] (dots1)-- (sum4);
+  \draw [->] (sum4) -- (z5);
+  \draw [->] (z5)   -- (sum5);
+  \draw [->] (g4)   -- (sum4);
+  
+  \draw [fill=black] (17,-2)   circle (.5mm) 
+                     (18,-2)   circle (1mm)
+                     (15.75,0) circle (.5mm)
+                     (18,-1)   circle (1mm)
+                     (19,-1.5) circle (1mm);
+  \draw (15,-2) node [left] {$d(x)$} -- (18,-2);
+  \draw [->] (17,-2) -- (sum5);
+  \draw (15.75,0) |- (18,-1);
+  \draw [->] (19,-1.5) -- (20,-1.5) node [right] {$c(x)$};
+  \draw [thick, cRed]  (19,-1.5) -- ++(155:1.15);
+  \draw [thick, cBlue] (19,-1.5) -- ++(205:1.15);
+\end{tikzpicture}
+
+\begin{itemize}
+  \item \textbf{\color{cBlue} Phase 1:} Ausgabe von $d(x)$. ($k$ Zyklen)
+  \item \textbf{\color{cRed}  Phase 2:} Ausgabe von $p(x) = $ Rest. ($n-k$ Zyklen)
+\end{itemize}
+
+% \begin{tabular}{ll}
+%   \textbf{Variante 1: LSB first} & \textbf{Variante 2: MSB first} \\
+%   \begin{tabular}{l}
+%     \begin{tikzpicture} [scale=0.5, transform shape]
+%       %place nodes
+%       \draw
+%         node at (0,0) [input, name=input]{}
+%         node at (3,0) [block] (z1) {\Large $z^{-1}$}
+%         node at (6,0) [block] (z2) {\Large $z^{-1}$}
+%         node at (9,0) [block] (z3) {\Large $z^{-1}$}
+%         node at (1.5 ,1.5) [block] (g0) {\Large $g_0$}
+%         node at (4.5 ,1.5) [block] (g1) {\Large $g_1$}
+%         node at (7.5 ,1.5) [block] (g2) {\Large $g_2$}
+%         node at (10.5,1.5) [block] (g3) {\Large $g_3$}
+%         node at (4.5 ,3) [sum](sum1) {\Large $+$}
+%         node at (7.5 ,3) [sum](sum2) {\Large $+$}
+%         node at (10.5,3) [sum](sum3) {\Large $+$};
+%         
+%       \draw      (input)  -- node [above] {\Large $d(x)$} (1.5,0);
+%       \draw [fill=black] (1.5,0) circle (1mm);
+%       \draw [->] (1.5,0)  -- (z1);
+%       \draw [->] (1.5,0)  -- (g0);
+%       \draw      (g0)     -- (1.5,3);
+%       \draw [->] (1.5,3)  -- (sum1);
+%       \draw [->] (sum1)   -- (sum2);
+%       \draw [->] (sum2)   -- (sum3);  
+%       \draw [->] (z1)     -- (z2);  
+%       \draw [->] (4.5,0)  -- (g1);
+%       \draw [fill=black] (4.5,0) circle (1mm);
+%       \draw [->] (g1)     -- (sum1);
+%       \draw [->] (z2)     -- (z3);  
+%       \draw [->] (7.5,0)  -- (g2);
+%       \draw [fill=black] (7.5,0) circle (1mm);
+%       \draw [->] (g2)     -- (sum2);
+%       \draw      (z3)     -- (10.5,0);
+%       \draw [->] (10.5,0) -- (g3);
+%       \draw [->] (g3)     -- (sum3);
+%       \draw [->] (sum3) -- node [above] {\Large $c(x)$}(12,3);
+%     \end{tikzpicture}
+%   \end{tabular} &
+%   \begin{tabular}{l}\begin{tikzpicture} [scale=0.5, transform shape]
+%       %place nodes
+%       \draw
+%         node at (0,0) [input, name=input]{}
+%         node at (3,0) [block] (z1) {\Large $z^{-1}$}
+%         node at (6,0) [block] (z2) {\Large $z^{-1}$}
+%         node at (9,0) [block] (z3) {\Large $z^{-1}$}
+%         node at (1.5 ,1.5) [block] (g0) {\Large $g_3$}
+%         node at (4.5 ,1.5) [block] (g1) {\Large $g_2$}
+%         node at (7.5 ,1.5) [block] (g2) {\Large $g_1$}
+%         node at (10.5,1.5) [block] (g3) {\Large $g_0$}
+%         node at (4.5 ,3) [sum](sum1) {\Large $+$}
+%         node at (7.5 ,3) [sum](sum2) {\Large $+$}
+%         node at (10.5,3) [sum](sum3) {\Large $+$};
+%         
+%       \draw      (input)  -- node [above] {\Large $d(x)$} (1.5,0);
+%       \draw [fill=black] (1.5,0) circle (1mm);
+%       \draw [->] (1.5,0)  -- (z1);
+%       \draw [->] (1.5,0)  -- (g0);
+%       \draw      (g0)     -- (1.5,3);
+%       \draw [->] (1.5,3)  -- (sum1);
+%       \draw [->] (sum1)   -- (sum2);
+%       \draw [->] (sum2)   -- (sum3);  
+%       \draw [->] (z1)     -- (z2);  
+%       \draw [->] (4.5,0)  -- (g1);
+%       \draw [fill=black] (4.5,0) circle (1mm);
+%       \draw [->] (g1)     -- (sum1);
+%       \draw [->] (z2)     -- (z3);  
+%       \draw [->] (7.5,0)  -- (g2);
+%       \draw [fill=black] (7.5,0) circle (1mm);
+%       \draw [->] (g2)     -- (sum2);
+%       \draw      (z3)     -- (10.5,0);
+%       \draw [->] (10.5,0) -- (g3);
+%       \draw [->] (g3)     -- (sum3);
+%       \draw [->] (sum3) -- node [above] {\Large $c(x)$}(12,3);
+%     \end{tikzpicture}
+%   \end{tabular}
+% \end{tabular}
+
+\end{twocolumn}
+\end{document}
