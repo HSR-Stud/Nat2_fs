@@ -53,7 +53,7 @@ Ein \textbf{Elementarereignis} ist ein Ereignisraum mit nur einem Ereignis.
   $\fmm 0 \leq P(A) \leq 1 \qquad \fmm P(S) = 1 \qquad P(\emptyset) = 0$ \\
   $\fmm P(\overline{A}) = 1 - P(A)$ \\
   $\fmm P(B) \leq P(A) \quad \text{für } B \subset A$ \\
-  $\fmm P(A \cup B = P(A) + P(B) \quad \text{für disjunkte A und B})$ \\
+  $\fmm P(A \cup B) = P(A) + P(B) \quad \text{für disjunkte A und B}$ \\
   $\fmm P(A \cup B) = P(A) + P(B) - P(A \cap B)$ \\
   $\fmm P(B \vert A) = \frac{P(A \cap B)}{P(A)} = P(A \vert B) \cdot \frac{P(B)}{P(A)}$ \\
   $\fmm P(A \cap B) = P(A) \cdot P(B) \quad \text{wenn A und B Unabhängig}$ \\
@@ -108,26 +108,26 @@ Ein \textbf{Elementarereignis} ist ein Ereignisraum mit nur einem Ereignis.
 
 \subsubsection{Erwartungswert (n-tes Moment) \& Varianz}
 \begin{tabular}{ll}
-  \multicolumn{2}{l}{$\fmm \mu_X = E[X] = \sum_{i} x_i \cdot p_X(x_i) =
+  \multicolumn{2}{l}{$\fmm \mu_X = \E[X] = \sum_{i} x_i \cdot p_X(x_i) =
   \int_{-\infty}^\infty x \cdot f_X(x) \cdot dx = ``\text{Wert } \cdot \text{W'keit}"$}\\
   Linearität des Erwartungswert & 
-  $E[X+Y] = E[X] + E[Y] $ \\
-  & $E(cX) = cE[X]$ \\
+  $\E[X+Y] = \E[X] + \E[Y] $ \\
+  & $\E[cX] = c\E[X]$ \\
 \end{tabular}
 
 \begin{tabularx}{\columnwidth}{Y}
 \textbf{Erwartungswert \& Moment} \\
-$\fmm E[Y] = E[g(X)] = \sum_{i} g(x_i) \cdot p_X(x_i) = \int_{-\infty}^\infty g(x) \cdot
+$\fmm \E[Y] = \E[g(X)] = \sum_{i} g(x_i) \cdot p_X(x_i) = \int_{-\infty}^\infty g(x) \cdot
 f_X(x) \cdot dx$ \\
-$ E[Z] = E[g(X,Y)] = \sum_i \left( \sum_j g(x_i,y_j) \cdot p_{XY}(x_i,y_i) \right)$  \\
-$ \fmm E[Z] = E[g(X,Y)] = 
+$ \E[Z] = \E[g(X,Y)] = \sum_i \left( \sum_j g(x_i,y_j) \cdot p_{XY}(x_i,y_i) \right)$  \\
+$ \fmm \E[Z] = \E[g(X,Y)] = 
 \int_{-\infty}^\infty \left( \int_{-\infty}^\infty g(x,y) \cdot f_{XY}(x,y) dx \right) dy$
 \\ 
 $ \fmm \text{n-tes Moment: } E(X^n) = \sum_i x_i^n \cdot p_X(x_i) =
 \int_{-\infty}^{\infty} x^n \cdot f_X(x) \cdot dx$ \\
 \textbf{Varianz} \\
-$\fmm \sigma_X^2 = Var(X) = E \left[ X^2 \right] - \mu_X^2 = \sum_i(x_i - \mu_X)^2 \cdot p_X(x_i)$ \\
-$\fmm \sigma_X^2 = Var(X) = \int_{-\infty}^{\infty} (x-\mu_X)^2 \cdot f_X(x) \cdot dx$ \\
+$\fmm \sigma_X^2 = \Var(X) = E \left[ X^2 \right] - \mu_X^2 = \sum_i(x_i - \mu_X)^2 \cdot p_X(x_i)$ \\
+$\fmm \sigma_X^2 = \Var(X) = \int_{-\infty}^{\infty} (x-\mu_X)^2 \cdot f_X(x) \cdot dx$ \\
 \end{tabularx}
 
 \subsubsection{(k,n)-tes Moment $m_{kn}$, Korrelation $m_{11}$}
@@ -136,13 +136,13 @@ $\fmm \sigma_X^2 = Var(X) = \int_{-\infty}^{\infty} (x-\mu_X)^2 \cdot f_X(x) \cd
   p_{XY}(x_i,y_i)\right)$ \\
   $\fmm m_{kn} = E\left[X^k Y^n\right] = \int_{-\infty}^\infty \left(
   \int_{-\infty}^\infty x^k y^n \cdot f_{XY}(x,y) \cdot dx \right) dy$ \\
-  $\fmm \textbf{Spezialfall: Korrelation} \quad m_{11} = E[XY] $
+  $\fmm \textbf{Spezialfall: Korrelation} \quad m_{11} = \E[XY] $
 \end{tabularx}
 
 \subsubsection{Kovarianz $\sigma_{XY}$}
 \begin{tabularx}{\columnwidth}{Y}
-  $\fmm \sigma_{XY} = Cov(X,Y) = E\left[ (X-\mu_X) \cdot (Y-\mu_Y) \right] $ \\
-  $\fmm \sigma_{XY} = E[XY] - E[X] \cdot E[Y] = m_{11} - \mu_X \cdot \mu_Y$ \\
+  $\fmm \sigma_{XY} = \Cov(X,Y) = E\left[ (X-\mu_X) \cdot (Y-\mu_Y) \right] $ \\
+  $\fmm \sigma_{XY} = \E[XY] - \E[X] \cdot \E[Y] = m_{11} - \mu_X \cdot \mu_Y$ \\
   Die zwei Zufallsvariablen $X$ und $Y$ sind \textbf{unkorreliert}, falls $\sigma_{XY} =
   0$. Statistisch unabhängige Zufallsvariablen sind unkorreliert.
 \end{tabularx}
@@ -163,8 +163,8 @@ eintritt.
 \begin{tabular}{@{}p{0.35\columnwidth}l@{}}
   \begin{tabular}{c}
     $\fmm \mu_X = n \cdot p \quad \sigma_x^2 = n p \cdot (1-p) $ \\
-    $\fmm p_X(k) = \binom{n}{k} p^k \cdot q^{n-k}$ \\
-    $\fmm F_X(x) = \sum_{k=0}^m \binom{n}{k} p^k \cdot q^{n-k}$ \\
+    $\fmm p_X(k) = \binom{n}{k} p^k \cdot (1-p)^{n-k}$ \\
+    $\fmm F_X(x) = \sum_{k=0}^m \binom{n}{k} p^k \cdot (1-p)^{n-k}$ \\
     \textbf{Grafik:} $p=0.4$, $n=100$
   \end{tabular} & 
   \begin{tabular}{l}
@@ -325,7 +325,7 @@ unverändert bleiben. Man unterschiedet streng und schwach stationäre Prozesse.
   $\fmm \overline{x} = \left< x(t) \right> = \limint x(t) dt$ \\
   $\fmm \overline{R_{XX}}(\tau) = \left<x(t) \cdot x(t + \tau) \right> = \limint x(t)
   \cdot x(t + \tau) dt$ \\
-  $\fmm E[\overline{x}] = \limint E \left[x(t) \right] dt = \limint \mu_x(t) dt$
+  $\fmm \E[\overline{x}] = \limint \E \left[x(t) \right] dt = \limint \mu_x(t) dt$
 \end{tabularx}
 
 \subsubsection{Streng stationärer Zufallsprozess (SSS)}
@@ -335,8 +335,8 @@ unverändert bleiben. Man unterschiedet streng und schwach stationäre Prozesse.
     Zeitverschiebung $t_c$: 
   \end{tabular}&
   \begin{tabular}{l}
-    $E \left[X(t) \right] = \mu_x$ \\
-    $R_{XX}(t_1,t_2) = R_X(\tau)$ \\
+    $E \left[X(t) \right] = \mu_x$ (unabhängig von $t$)\\
+    $R_{XX}(t_1,t_2) = R_X(\tau)$ (unabhängig von $t$)\\
     $C_{XX}(t_1,t_2) = R_X(\tau) - \mu_x^2$
   \end{tabular}
 \end{tabularx}
@@ -344,14 +344,13 @@ unverändert bleiben. Man unterschiedet streng und schwach stationäre Prozesse.
 \subsubsection{Schwach stationärer Zufallsprozess (WSS)}
 \begin{tabularx}{\columnwidth}{XX}
   \begin{tabular}{p{0.45\columnwidth}}
-    Ein Zufallsprozess ist schwach stationär, sobald folgende Eigenschaft erfüllt ist: \\
-    $f_X(x_1,x_2;t_1,t_2) $ \\
-    $\qquad = f_X(x_1,x_2;t_1+t_c,t_2+t_c)$
+    Ein Zufallsprozess ist schwach stationär, sobald folgende Eigenschaften erfüllt sind: \\
   \end{tabular}&
   \begin{tabular}{l}
-    $E \left[X(t) \right] = \mu_x$ \\
-    $R_{XX}(t_1,t_2) = R_X(\tau)$ \\
+    $E \left[X(t) \right] = \mu_x$ (unabhängig von $t$) \\
+    $R_{XX}(t_1,t_2) = R_X(\tau)$ (unabhängig von $t$)\\
     $C_{XX}(t_1,t_2) = R_X(\tau) - \mu_x^2 = C_{XX}(\tau)$ \\
+    $f_X(x_1,x_2;t_1,t_2) = f_X(x_1,x_2;t_1+t_c,t_2+t_c)$ \\
   \end{tabular}
 \end{tabularx}
 
@@ -443,8 +442,8 @@ Spektrale \textbf{Leistung} bei WSS Prozessen:
 \end{tabular}
 
 \begin{tabular}{c}
-  $\fmm R_{YY}(t_1,t_2) = \infiint h(u_1) \cdot h(u_2) \cdot R_{XX}(t_1-u_1,t_2-u_2 )
-  \cdot du_1 \cdot du_2 $ \\
+  $\fmm R_{YY}(t,t + \tau) = \infiint h(u_1) \cdot h(u_2) \cdot R_{XX}(t-u_1,t + \tau-u_2 )
+  \cdot du_1 du_2 $ \\
   $\fmm R_{YY}(\tau) \bedeq \infiint h(u_1) \cdot h(u_2) \cdot R_{XX}(\tau + u_1 - u_2)
   \cdot du_1 \cdot du_2$ \\
   Wenn $X(t)$ ein WSS-Prozess ist, ist $Y(t)$ auch ein WSS-Prozess.
@@ -491,7 +490,7 @@ f_X(x_1;t_1) \cdot f_X{x_2;t_2}$
   \end{tikzpicture} 
   \item Zweidimensionale (diskrete) Amplitudenverteilung: $p_{XX}(x_1, x_2)$. 
   {\color{cRed}Rot}: $\tau = 0$, {\color{cBlue}Blau}: $\tau > T_p$, dazwischen linearer Anstieg. 
-  Danach muss die AFK berechnet werden: $\fmm R_{XX}(\tau) = \sum_i \sum_j x_i \cdot x_j \cdot p_{XX}(x_i, x_j)$
+  Danach muss die AKF berechnet werden: $\fmm R_{XX}(\tau) = \sum_i \sum_j x_i \cdot x_j \cdot p_{XX}(x_i, x_j)$
   
   \begin{tikzpicture}[x=1cm,y=1cm,z=0.5cm,>=stealth]
     % The axes
@@ -550,12 +549,12 @@ f_X(x_1;t_1) \cdot f_X{x_2;t_2}$
 \end{tikzpicture}
 
 Das \begin{definition}Rauschsignal $N(t)$\end{definition} ist ein stationärer und ergodischer
-Zufallsprozess, welcher mit $X(t)$ unkorreliert ist. Ausserdem gilt: $E[N(t)] = 0, \quad E[X(t) \cdot N(t)] = 0$. 
+Zufallsprozess, welcher mit $X(t)$ unkorreliert ist. Ausserdem gilt: $\E[N(t)] = 0, \quad \E[X(t) \cdot N(t)] = 0$. 
 Der Frequenzgang $S_{nn}(\omega) = \frac{\eta}{2}$.
 
 Das Nachrichtensignal ist ein \begin{definition}Zufallsprozess $X(t)$\end{definition} mit 
 $\abs{X(t)} \leq 1$, bzw. $\abs{x_\lambda(t)} \leq 1$ für alle $\lambda$ des Ereignisraums 
-$s$. Die \begin{definition}Leistung $S_X$\end{definition} $= S_X(t) = E[X^2(t)] \leq 1$. 
+$s$. Die \begin{definition}Leistung $S_X$\end{definition} $= S_X(t) = \E[X^2(t)] \leq 1$. 
 Ausserdem ist das Signal $X(t)$ bandbeschränkt mit der 
 \begin{definition}Bandbreite $B$\end{definition}.
 
@@ -615,8 +614,8 @@ Bei den PM- / FM-Systemen gilt für das \cdef{Hubverhältnis $D$} $ = \frac{\Del
 
 
 \subsection{Additive White Gaussian Noise AWGN}
-Beispiel: thermisches Rauschen von Wiederständen. \cdef{$S_{XX}(\omega)$: Spektrale Leistung}, \cdef{$B$: Bandbreite des Rauschen}.
 $$S_{XX}(\omega) = \frac{\eta}{2}, \qquad R_{XX}(\tau) = \frac{\eta}{2} \cdot \delta(\tau), \qquad \eta = \frac{\sigma^2}{B}$$
+$$\text{Leistung eines gefilterten AWGN: } \quad S_N = \frac{1}{2\pi} \int_{-\infty}^\infty \frac{\eta}{2} \left[ H_{LPF}(\omega) \right]^2 \cdot d\omega$$
 
 \subsection{Farbige Rauschsignale}
 \begin{tabular}{ll}
@@ -754,7 +753,7 @@ $$\underbrace{z(t) = r(t) \ast h(t) = \int_0^t r(\tau) h(t-\tau) d\tau}_{\text{M
   $I(X_i) \geq 0$ \\
   $I(X_i) > I(X_k), \quad \text{wenn } P(X_i) < P(X_k)$ \\
   $I(X_i, X_k) = I(X_i) + I(X_k), \quad \text{wenn } X_i, X_k \text{ statistisch unabhängig}$ \\
-  $\fmm H(X) = E[I(X_i)] = \sum_i P(X_i) \cdot I(X_i) = - \sum_i P(X_i) \cdot \log_2{ P(X_i)}$ \\
+  $\fmm H(X) = \E[I(X_i)] = \sum_i P(X_i) \cdot I(X_i) = - \sum_i P(X_i) \cdot \log_2{ P(X_i)}$ \\
   $0 \leq H(X) \leq \log_2{m} \qquad \text{für binäre Quellen: } 0 \leq H(X) \leq 1$ \\
   $H_{max}(X) = \log_2{m}$ \\
   $\fmm R(X) = H_{max}(X) - H(X) = \log_2{m} + \sum_i P(X_i) \cdot \log_2{P(X_i)}$
@@ -1228,6 +1227,53 @@ $$x^{n-k} \cdot d(x) = q(x) \cdot g(x) + p(x)$$
   \item \textbf{\color{cBlue} Phase 1:} Ausgabe von $d(x)$. ($k$ Zyklen)
   \item \textbf{\color{cRed}  Phase 2:} Ausgabe von $p(x) = $ Rest. ($n-k$ Zyklen)
 \end{itemize}
+
+\section{Anhang}
+
+\subsection{Fourier Transformation}
+$$X(\omega) = \fourier(x(t)) = \int_{-\infty}^\infty x(t) \cdot e^{-j \omega t} \cdogt dt $$
+$$x(t) = \fourier^{-1}(X(\omega)) = \frac{1}{2\pi} \int_{-\infty}^\infty X(\omega) \cdot e^{j \omega t} \cdot d\omega$$
+
+\subsubsection{Eigenschaften}
+\begin{tabular}{lcc}
+  Eigenschaft & $x(t)$ & $X(\omega)$ \\
+  \toprule
+  Linearität & $a_1 x_1(t) + a_2 x_2(t)$ & $a_1 X_1(\omega) + a_2 X_2(\omega)$ \\
+  Zeitverschiebung & $x(t-t_0)$ & $X(\omega) \cdot e^{-j \omega t_0}$ \\
+  Zeitskalierung & $x(at)$ & $\frac{1}{\abs{a}} \cdot X\left(\frac{\omega}{a}\right)$ \\
+  Dualität & $X(t)$ & $2 \pi x(-\omega)$ \\
+  Frequenz verschiebung & $x(t) \cdot e^{j \omega_0 t}$ & $X(\omega - \omega_0)$ \\
+  Modulation & $x(t) \cdot \cos \omega_0 t$ & $\frac{1}{2} \left[ X(\omega - \omega_0) + X(\omega + \omega_0) \right]$ \\
+  Ableitung nach $t$ & $\dot{x}(t)$ & $j \omega X(\omega)$ \\
+  Ableitung nach $\omega$ & $-j t x(t)$ & $X'(\omega)$ \\
+  Integration & $\int_{-\infty}^t x(\tau) d\tau$ & $\frac{1}{j\omega} X(\omega) + \pi X(\omega) \delta(\omega)$  \\
+  Convolution & $x_1(t) \ast x_2(t)$ & $X_1(\omega) \cdot X_2(\omega)$ \\
+  Multiplication & $x_1(t) \cdot x_2(t)$ & $\frac{1}{2\pi} X_1(\omega) \ast X_2(\omega)$ 
+\end{tabular}
+
+\subsubsection{Einige Transformationspaare}
+
+\begin{tabular}{cc}
+  $x(t)$ & $X(\omega)$ \\
+  \toprule 
+  $\delta(t)$ & $1$ \\
+  $\delta(t-t_0)$ & $e^{j \omega t_0}$ \\
+  $1$ & $2 \pi \delta(\omega)$ \\
+  $u(t) = \left\{ \begin{array}{ll} 1 & \text{falls } t > 0 \\ 0 & \text{sonst} \end{array} \right.$ & $\fmm \pi \delta(\omega) + \frac{1}{j\omega}$ \\
+  $\sgn(t)$ & $\fmm \frac{2}{j\omega}$ \\
+  $\fmm \frac{1}{\pi t}$ & $-j \cdot \sgn(\omega)$ \\
+  $e^{j \omega_0 t}$ & $2 \pi \delta(\omega - \omega_0)$ \\
+  $\cos \omega_0 t$ & $\pi \left[ \delta(\omega - \omega_0) + \delta(\omega + \omega_0) \right]$ \\
+  $\sin \omega_0 t$ & $-j \pi \left[ \delta(\omega - \omega_0) - \delta(\omega + \omega_0) \right]$ \\
+  $e^{-a t} \cdot u(t), \quad a > 0$ & $\fmm \frac{1}{j \omega + 1}$ \\
+  $t e^{-a t} \cdot u(t), \quad a > 0$ & $\fmm \frac{1}{\left( j \omega + 1 \right)^2}$ \\
+  $\fmm e^{-t^2 / 2\sigma^2 }$ & $\sigma \sqrt{2\pi} \cdot e^{-\sigma^2 \omega^2 / 2}$ \\
+  $p_a(t) = \left\{ \begin{array}{ll} 1 & \text{falls } \abs{t} < a \\ 0 & \text{sonst} \end{array} \right.$ & $\fmm 2a \cdot \frac{\sin \omega a}{\omega a}$ \\
+  $\fmm \frac{\sin at}{\pi t}$ & $p_a(\omega) = \left\{ \begin{array}{ll} 1 & \text{falls } \abs{\omega} < a \\ 0 & \text{sonst} \end{array} \right.$ \\
+  $\Lambda_a(t) = \left\{ \begin{array}{ll} 1 - \frac{\abs{t}}{a} & \text{falls } \abs{t} < a \\ 0 & \text{sonst} \end{array} \right.$ & $\fmm a \left[ \frac{\sin \left(\frac{\omega a}{2}\right)}{\frac{\omega a}{2}} \right]^2$ \\
+  $\fmm \sum_{n = -\infty}^{\infty} \delta(t - nT)$ & $\fmm \frac{2\pi}{T} \sum_{n = -\infty}^{\infty} \delta(\omega - n \frac{2\pi}{T})$ \\
+  $\fmm \hat{x}(t) = \frac{1}{\pi} \int_{-\infty}^\infty \frac{x(\tau)}{t - \tau}d \tau$ & $-j \sgn(\omega) \cdot X(\omega)$ \\
+\end{tabular}
 
 % \begin{tabular}{ll}
 %   \textbf{Variante 1: LSB first} & \textbf{Variante 2: MSB first} \\
