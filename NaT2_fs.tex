@@ -312,8 +312,22 @@ Rauschquelle.
   $\fmm \mu_x(t) = E \left[X(t) \right] = \infint x \cdot f_X(x;t) dx$ \\
   $\fmm R_{XX}(t_1,t_2) = E \left[ X(t_1)X(t_2) \right] = \infiint x_1 x_2 \cdot
   f_X(x_1,x_2;t_1,t_2) \cdot dx_1 \cdot dx_2$ \\
-  $\fmm C_{XX}(t_1,t_2) = R_{XX}(t_1, t_2) - \mu_x(t_1) \cdot \mu_x(t_2)$
+  $\fmm C_{XX}(t_1,t_2) = R_{XX}(t_1, t_2) - \mu_x(t_1) \cdot \mu_x(t_2)$ \\
 \end{tabular} 
+
+\subsubsection{Leistung}
+
+\begin{tabular}{ll}
+  \begin{tabular}{p{0.5\columnwidth}}
+    \cdef{Leistung $P$} entspricht der Autokorrelation bei $\tau = 0$. \\
+    \cdef{DC-Leistung $P_{DC}$} ist nur vorhanden, falls sich an der Stelle $S_{XX}(0)$ eine Dirac-Impulsfunktion befindet. 
+  \end{tabular}
+  \begin{mtabular}{l}
+    $\fmm P = R_{XX}(0)$ \\
+    $\fmm S_{XX}(0) = \infint R_{XX}(\tau) d\tau$ \\
+    $\fmm P_{DC} = \frac{1}{2\pi} \lim_{\Omega \rightarrow 0} \int_{-\Omega/2}^{\Omega/2}S_{XX}(\omega) d\omega $
+  \end{mtabular}
+\end{tabular}
 
 
 \subsection{Stationarität}
@@ -350,7 +364,7 @@ unverändert bleiben. Man unterschiedet streng und schwach stationäre Prozesse.
     $E \left[X(t) \right] = \mu_x$ (unabhängig von $t$) \\
     $R_{XX}(t_1,t_2) = R_X(\tau)$ (unabhängig von $t$)\\
     $C_{XX}(t_1,t_2) = R_X(\tau) - \mu_x^2 = C_{XX}(\tau)$ \\
-    $f_X(x_1,x_2;t_1,t_2) = f_X(x_1,x_2;t_1+t_c,t_2+t_c)$ \\
+    {\small$f_X(x_1,x_2;t_1,t_2) = f_X(x_1,x_2;t_1+t_c,t_2+t_c)$ }\\
   \end{tabular}
 \end{tabularx}
 
@@ -411,7 +425,7 @@ Auto- und Kreuz\textbf{kovarianz} be WSS Prozessen:
   $C_{XY}(\tau) = 0 \longrightarrow \text{Zufallsprozesse sind zueinander unkorreliert}$
 \end{tabularx}
 
-\newpage
+\vspace{1em}
 Spektrale \textbf{Leistung} bei WSS Prozessen:
 \vspace{0.5em}
 
@@ -460,19 +474,20 @@ Spektrale \textbf{Leistung} bei WSS Prozessen:
   S_{XX}(\omega) d\omega$
 \end{tabular}
 
-\subsection{Spezielle Zufallsprozesse}
-\subsubsection{Gauss'scher Zufallsprozess}
-Zu jedem Zeitpunkt $t_i$ ist die Zufallsvariable $X(t_i)$ normalverteilt. Ist ein
-gauss'scher Zufallsprozess WSS, ist er auch SSS. Ein gauss'scher Zufallsprozess $X(t)$ ist
-am Ausgang eines LTi Systems $Y(t)$ auch gaussisch.
-
-\begin{tabular}{c}
-$\fmm f_x(x_1,x_2;t_1,t_2) = \frac{1}{2\pi \sigma_{x_1}
-\sigma_{x_2}} \cdot e^{-\frac{(x_1-\mu_{x_1})^2}{2\sigma_{x_1}^2}} \cdot
-e^{-\frac{(x_2-\mu_{x_2})^2}{2\sigma_{x_2}^2}}$ \\
-$\fmm \text{Wenn } C_{XX}(t_1,t_2) = 0 \text{, dann ist } f_{XX}(x_1,x_2;t_1,t_2) =
-f_X(x_1;t_1) \cdot f_X{x_2;t_2}$
-\end{tabular}
+\newpage
+% \subsection{Spezielle Zufallsprozesse}
+% \subsubsection{Gauss'scher Zufallsprozess}
+% Zu jedem Zeitpunkt $t_i$ ist die Zufallsvariable $X(t_i)$ normalverteilt. Ist ein
+% gauss'scher Zufallsprozess WSS, ist er auch SSS. Ein gauss'scher Zufallsprozess $X(t)$ ist
+% am Ausgang eines LTi Systems $Y(t)$ auch gaussisch.
+% 
+% \begin{tabular}{c}
+% $\fmm f_x(x_1,x_2;t_1,t_2) = \frac{1}{2\pi \sigma_{x_1}
+% \sigma_{x_2}} \cdot e^{-\frac{(x_1-\mu_{x_1})^2}{2\sigma_{x_1}^2}} \cdot
+% e^{-\frac{(x_2-\mu_{x_2})^2}{2\sigma_{x_2}^2}}$ \\
+% $\fmm \text{Wenn } C_{XX}(t_1,t_2) = 0 \text{, dann ist } f_{XX}(x_1,x_2;t_1,t_2) =
+% f_X(x_1;t_1) \cdot f_X{x_2;t_2}$
+% \end{tabular}
 
 \subsection{Spektren von Zufallssesquenzen berechnen}
 \begin{enumerate}
@@ -615,7 +630,7 @@ Bei den PM- / FM-Systemen gilt für das \cdef{Hubverhältnis $D$} $ = \frac{\Del
 
 \subsection{Additive White Gaussian Noise AWGN}
 $$S_{XX}(\omega) = \frac{\eta}{2}, \qquad R_{XX}(\tau) = \frac{\eta}{2} \cdot \delta(\tau), \qquad \eta = \frac{\sigma^2}{B}$$
-$$\text{Leistung eines gefilterten AWGN: } \quad S_N = \frac{1}{2\pi} \int_{-\infty}^\infty \frac{\eta}{2} \left[ H_{LPF}(\omega) \right]^2 \cdot d\omega$$
+$$\text{Leistung eines gefilterten AWGN: } \quad S_N = \frac{1}{2\pi} \int_{-\infty}^\infty \frac{\eta}{2} \left[ H_{F}(\omega) \right]^2 \cdot d\omega$$
 
 \subsection{Farbige Rauschsignale}
 \begin{tabular}{ll}
@@ -756,8 +771,8 @@ $$\underbrace{z(t) = r(t) \ast h(t) = \int_0^t r(\tau) h(t-\tau) d\tau}_{\text{M
   $\fmm H(X) = \E[I(X_i)] = \sum_i P(X_i) \cdot I(X_i) = - \sum_i P(X_i) \cdot \log_2{ P(X_i)}$ \\
   $0 \leq H(X) \leq \log_2{m} \qquad \text{für binäre Quellen: } 0 \leq H(X) \leq 1$ \\
   $H_{max}(X) = \log_2{m}$ \\
-  $\fmm R(X) = H_{max}(X) - H(X) = \log_2{m} + \sum_i P(X_i) \cdot \log_2{P(X_i)}$
-  $R = r \cdot H(X)$
+  $\fmm R(X) = H_{max}(X) - H(X) = \log_2{m} + \sum_i P(X_i) \cdot \log_2{P(X_i)}$ \\
+  $R(X) = r \cdot H(X)$
 \end{tabular}
 \end{center}
 
@@ -937,7 +952,7 @@ $$C = r \cdot C_s = r \cdot \max I(X,Y)$$
   \item \textbf{Fixed Length Code}: Jedes Codewort hat die gleiche Länge (Bsp: ASCII-Code)
   \item \textbf{Variable Length Code}: Je nach häufigkeit wird die Länge der Codewörter bestummen (Bsp: 
         Morse, Shannon-Fano, Huffmann)
-  \item \textbf{Prefix-Free Code}: Kein codewort ist Präfik eines anderen Codeworts (Bsp: Shannon-Fano, Huffman)
+  \item \textbf{Prefix-Free Code}: Kein codewort ist Präfix eines anderen Codeworts. Ein präfixfreier Code ist immer eindeutig dekodierbar.
   \item \textbf{Uniquely Decodable Code}: Eine Kette von Codewörtern kann eindeutig wieder in die ursprüngliche 
         Symbolfolge zurückgewandelt werden.
   \item \textbf{Instantaneous Code}: Eindeutig decodierbarer Code, welcher nach dem Empfangen jedes einzelnen
@@ -1012,6 +1027,8 @@ Das heisst, dass Bitfehler in der Übertragung zu einer Beschränkung der nutzba
   $\cn{e}, e(x)$ & Error-pattern der Länge $n$\\
 \end{ddtabular}
 
+Ein Fehlerkorrigierender Code wird angegeben mit ($n$,$k$).
+
 \subsection{Blockcodes}
 
 Der Eingangsdatenstrom wird in Blöcke unterteilt, welcher separat codiert wird. 
@@ -1027,6 +1044,7 @@ $$\cn{c} = \cn{a} \oplus \cn{b} = (a_1 \oplus b_1, a_2 \oplus b_2, \ldots, a_n \
 
 Ein Code $C$ ist genau dann linear, wenn für alle $\cn{a}$ und $\cn{b}$ auch $\cn{c} = \cn{a} \oplus \cn{b}$
 zu $C$ gehört. 
+Ausserdem ist jeder Code, welcher mit einer Generatormatrix definiert werden kann, ein linearer Blockcode.
 
 \begin{dtabular}
   $w(\cn{c})$ & Hamming-Gewicht: anzahl Einer des Codewortes \\
@@ -1039,14 +1057,17 @@ $$d_{min} = \min [ d(\cn{a}, \cn{b})] \stackrel{\text{linear}}{=} \min [ w(\cn{a
 
 Anhand dieser minimalen Hammingdistanz $d_{min}$ lässt sich die Anzahl der korrigierbaren und detektierbaren Fehler berechnen:
 
-\begin{tabular}{ll}
+\begin{tabular}{lll}
   \begin{dtabular}
     $t_d$ & Detektierbare Fehler \\
     $t_c$ & Korrigierbare Fehler \\
   \end{dtabular} &
   \begin{mtabular}{l}
     $t_d = d_{min} - 1$ \\
-    $\fmm t_c=\frac{1}{2} \cdot (d_{min} - 1) $
+    $\fmm t_c= \floor \left[ \frac{1}{2} \cdot (d_{min} - 1) \right]$ \\
+  \end{mtabular} &
+  \begin{mtabular}{l}
+    $\fmm 2^{n-k}\geq \sum_{i=0}^{t_c} \binom{n}{i}$ \\
   \end{mtabular}
 \end{tabular}
 
@@ -1066,7 +1087,27 @@ $$\cn{c} = \left[ \begin{array}{llll} d_1 & d_2 & \cdots & d_k \end{array} \righ
   \end{array} \right]
 $$
 
-\subsubsection{Praitätsprüfmatrix $H$}
+\subsubsection{Bestimmung der Generatormatrix}
+Die $n$ Zeilen von G werden aus Codeworten gebildet. 
+Diese bestehen neben dem Systematischen Teil (Einheitsmatrix) aus \cdef{Paritätsbits $p(x)$ (Ordnung $n-k-1$)}. 
+Diese sind \textbf{die Reste der folgenden Divisionen} durch $g(x)$ (Ordnung $n-k$):
+
+\begin{tabularx}{\columnwidth}{cc}
+$$\begin{array}{c}
+  p_1 = x^{n-1} \: \mod g(x) \\
+  p_2 = x^{n-2} \: \mod g(x) \\
+  \vdots  \\
+  p_k = x^{n-k} \: \mod g(x) \\
+\end{array}$$ &
+$$G=\left[ \begin{array}{llllllll} 
+  1 & 0 & \cdots & 0 & p_{10} & p_{11} & \cdots & p_{1,n-k-1} \\
+  0 & 1 & \cdots & 0 & p_{20} & p_{21} & \cdots & p_{2,n-k-1} \\
+  \vdots & \vdots & \ddots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+  0 & 0 & \cdots & 1 & p_{k0} & p_{k1} & \cdots & p_{k,n-k-1} \\
+\end{array} \right]$$
+\end{tabularx}
+
+\subsubsection{Paritätsprüfmatrix $H$}
 Mit dieser Matrix können Übertragungsfehler erkannt werden. $O$ ist die $[k \times m]$ 
 Nullmatrix, $\cn{0}$ ist der $[1 \times m]$ Nullvektor
 
@@ -1092,11 +1133,11 @@ Gilt das Gleichheitszeichen, handelt es sich um einen so genannten perfekten Cod
 Ein perfekter Code, der nur Einzelfehler korrigieren kann, nennt man \cdef{Hamming-Code}.
 
 \subsection{Zyklische Lineare Codes}
-Jede Zyklische Verschiebung eines Codewortes $\cn{c}$ zu einem neuen gültigen Codewort von $C$ führt.
-Um hohe Coderate zu erzielen, sollte eine möglichst hohe Coderate $R_c = \frac{k}{n}$ erreicht werden
+Jede Zyklische Verschiebung eines Codewortes $\cn{c}$ führt zu einem neuen gültigen Codewort von $C$.
+Wenn bei der Generatormatrix eine Zeile zyklisch verschoben wird, muss diese gleich einer anderen Zeile sein.
+Um eine hohe Coderate zu erzielen, sollte eine möglichst hohe Coderate $R_c = \frac{k}{n}$ erreicht werden
 Ein Codewort $\cn{c}$ kann als Polynom $c(x)$ geschrieben werden:
-
-$$\cn{c} = (c_0, \, c_1, \, c_2, \, \ldots \, c_{n-1}) \qquad c(x) = c_0 + c_1 x + c_2 x^2 + \ldots + c_{n-1} x^{n-1}$$
+$\cn{c} = (c_0, \, c_1, \, c_2, \, \ldots \, c_{n-1}) \quad c(x) = c_0 + c_1 x + c_2 x^2 + \ldots + c_{n-1} x^{n-1}$
 
 Es werden folgende Operationen definiert:
 
@@ -1105,7 +1146,7 @@ $$\mod_2(0+x^k) = 0 \oplus x^k = x^k \qquad \mod_2(0-x^k) = 0 - x^k = x^k$$
 
 $$\text{Beispiele:} \: 
 \begin{array}{ll}
-  \cn{a} = (1\,1\,0\,0\,0) & a(x) = 1 + x + x^2 \\
+  \cn{a} = (1\,1\,0\,0\,0) & a(x) = 1 + x \\
   \cn{b} = (1\,0\,1\,1\,0) & b(x) = 1 + x^2 + x^3 \\
 \end{array}$$
 $$\cn{a} \odot \cn{b} = a(x) \cdot b(x) = 1 + x + 2x^2 + 2x^3 + 2x^4 + x^5 = 1 + x + x^5 \Rightarrow (1\,1\,0\,0\,1)$$
@@ -1135,12 +1176,15 @@ Im empfangenen Codewort $c_r(x)$ muss der Fehler $e(x)$ gefunden werden.
 Das Fehlersyndrom $s(x)$ ist ein Polynom des Grads $n-k$.
 
 $$c_r(x) = c(x) \oplus e(x)$$
-$$s(x) = r(x) \: \mod g(x)$$
+$$s(x) = c_r(x) \: \mod g(x)$$
 $$s(x) = e(x) \: \mod g(x)$$
 
 
 \subsubsection{Generatormatrix}
-$$G = \left(\begin{array}{c} g(x) \\ x \cdot g(x) \\ x^2 \cdot g(x) \\ \vdots \\ x^{k-1} \cdot g(x) \end{array}\right)$$
+\begin{tabular}{p{0.5\columnwidth}l}
+  Die Zeilen einer beliebigen Generatormatrix $G$ bestehen aus $k$ gültigen unabhängigen Codewörters & 
+  $G = \left(\begin{array}{c} g(x) \\ x \cdot g(x) \\ \vdots \\ x^{k-1} \cdot g(x) \end{array}\right)$
+\end{tabular}
 
 
 \subsubsection{Hardware-Realisierung}

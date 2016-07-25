@@ -44,6 +44,7 @@
 \DeclareMathOperator\erf{erf} 
 \DeclareMathOperator\Var{Var} 
 \DeclareMathOperator\Cov{Cov} 
+\DeclareMathOperator\floor{floor} 
 \DeclareMathOperator\E{E} 
 
 
@@ -82,8 +83,12 @@
 \newcommand{\bedeq}{\mathrel{\stackrel{\makebox[0pt]{\mbox{\normalfont\tiny WSS}}}{=\joinrel=}}}
 \renewcommand{\fourier}{\mathcal{F}}
 
+
+
+\newcommand{\ncr}[2]{\binom{#1}{#2}}
+
 \renewenvironment{description}{\color{cGray}}{}
-\newenvironment{definition}{\color{cGray}}{}
+\newenvironment{definition}{\color{cGray}}{} 
 \newcommand{\cdef}[1]{\begin{definition}#1\end{definition}}
 
 
