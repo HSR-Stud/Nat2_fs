@@ -577,42 +577,32 @@ Ausserdem ist das Signal $X(t)$ bandbeschränkt mit der
 
 \begin{footnotesize}
 \begin{tabular}{|c|c|c|c|}
-  \hline
-   & \textbf{Baseband} & \textbf{DSB-SC} & \textbf{AM} \\ \hline
-  Eingangsnutzsignal $X_i(t)$ & 
-  $X(t)$ & $X(t) \cdot A_c \cdot \cos(\omega_c t)$ & $A_c (1 + \mu X(t)) \cos(\omega_c t)$ \\\hline
-  Leistung $S_i$ von $X_i(t)$ & $S_x$ & $\frac{1}{2} \cdot A_c^2 \cdot S_x$ & 
-  $\frac{1}{2}A_c^2 (1 + \mu^2 S_x)$ \\ \hline
+  \hline 
+  & \textbf{Baseband} & \textbf{DSB-SC} & \textbf{AM} \\ \hline
+  Eingangsnutzsignal $X_i(t)$ & $X(t)$ & $X(t) \cdot A_c \cdot \cos(\omega_c t)$ & $A_c (1 + \mu X(t)) \cos(\omega_c t)$ \\\hline
+  Leistung $S_i$ von $X_i(t)$ & $S_x$ & $\frac{1}{2} \cdot A_c^2 \cdot S_x$ & $\frac{1}{2}A_c^2 (1 + \mu^2 S_x)$ \\ \hline
   Bandbreite von $X_i(t)$ & $B$ & $2B$ & $2B$ \\ \hline
-  Leistung $S_{Ni}$ von $N_i(t)$ & $\eta B$ & $2 \eta B$ & $2 \eta B$ \\ \hline
-  $\text{SNR}_i$ & $\fmm \frac{S_i}{\eta B}$ & $\fmm \frac{A_c^2 S_x}{4 \eta B}$ & 
-  $\fmm \frac{A_c^2 (1 + \mu^2 S_x)}{4 \eta B}$ \\ \hline
+  Rauschleistung $S_{Ni}$ von $N_i(t)$ & $\eta B$ & $2 \eta B$ & $2 \eta B$ \\ \hline
+  $\text{SNR}_i$ & $\fmm \frac{S_i}{\eta B}$ & $\fmm \frac{A_c^2 S_x}{4 \eta B}$ & $\fmm \frac{A_c^2 (1 + \mu^2 S_x)}{4 \eta B}$ \\ \hline
   Ausgangsnutzsignal $X_o(t)$ & $X(t)$ & $A_c \cdot X(t)$ & $A_c \cdot \mu \cdot X(t)$ \\ \hline
   Leistung $S_o$ von $X_o(t)$ & $S_X$ & $A_c^2 S_x$ & $A_c^2 \cdot \mu^2 \cdot S_X$ \\ \hline
-  Leistung $S_{No}$ von $N_o(t)$ & $\eta B$ & $2 \eta B$ & $2 \eta B$ \\ \hline
-  $\text{SNR}_o$ & $\fmm \frac{S_i}{\eta B}$ & $\fmm \frac{A_c^2 S_X}{2 \eta B}$ & 
-  $\fmm \frac{A_c^2 \mu^2 S_X}{2 \eta B}$ \\ \hline
-  $\text{SNR}_o$ mit $\gamma$ & $\gamma$ & $\gamma$ & $\frac{\mu^2 S_X}{1 + \mu^2 S_X} 
-  \cdot \gamma$ \\ \hline 
+  Rauschleistung $S_{No}$ von $N_o(t)$ & $\eta B$ & $2 \eta B$ & $2 \eta B$ \\ \hline
+  $\text{SNR}_o$ & $\fmm \frac{S_i}{\eta B}$ & $\fmm \frac{A_c^2 S_X}{2 \eta B}$ & $\fmm \frac{A_c^2 \mu^2 S_X}{2 \eta B}$ \\ \hline
+  $\text{SNR}_o$ mit $\gamma$ & $\gamma$ & $\gamma$ & $\frac{\mu^2 S_X}{1 + \mu^2 S_X} \cdot \gamma$ \\ \hline 
 \end{tabular} 
 
 \begin{tabular}{|c|c|c|}
   \hline & \textbf{PM} & \textbf{FM} \\ \hline
-  Eingangsnutzsignal $X_i(t)$ & $A_c \cdot \cos(\omega_c t + k_p \cdot X(t)) \quad$ & 
-  $A_c \cos(\omega_c t + k_f \int_{-\infty}^t X(\tau) d\tau)$ \\\hline
+  Eingangsnutzsignal $X_i(t)$ & $A_c \cdot \cos(\omega_c t + k_p \cdot X(t)) \quad$ & $A_c \cos(\omega_c t + k_f \int_{-\infty}^t X(\tau) d\tau)$ \\\hline
   Leistung $S_i$ von $X_i(t)$ & $\frac{1}{2} A_c^2$ & $\frac{1}{2} A_c^2$ \\ \hline
   Bandbreite von $X_i(t)$ & $2(D + 1)B$ & $2(D + 1) B$ \\ \hline
-  Leistung $S_{Ni}$ von $N_i(t)$ & $2(D + 1)\eta B$ & $2(D + 1) \eta B$ \\ \hline
-  Ausgangsnutzsignal $X_o(t)$ & $\fmm \frac{A_c^2}{4(D+1)\eta B}$ & 
-  $\fmm \frac{A_c^2}{4(D+1)\eta B}$ \\ \hline
-  Leistung $S_o$ von $X_o(t)$ & $k_p \cdot X(t)$ & $k_f <cdot X(t)$ \\ \hline
-  $\text{SNR}_i$ & $k_p^2 S_X$ & $k_f^2 S_X$ \\ \hline
-  Leistung $S_{No}$ von $N_o(t)$ & $\fmm \frac{2}{A_c^2} \eta B$ & 
-  $\fmm \frac{2(2\pi B)^2}{3A_c^2} \eta B$ \\ \hline
-  $\text{SNR}_o$ & $\fmm \frac{k_p^2 A_c^2 S_x}{2 \eta B}$ & 
-  $\fmm \frac{3 D^2 A_c^2 S_X}{2 \eta B}$ \\ \hline
-  $\text{SNR}_o$ mit $\gamma$ & $k_p^2 \cdot S_x \cdot \gamma $ & 
-  $3 D^2 \cdot S_X \cdot \gamma$ \\ \hline
+  Rauschleistung $S_{Ni}$ von $N_i(t)$ & $2(D + 1)\eta B$ & $2(D + 1) \eta B$ \\ \hline
+  $\text{SNR}_i$ & $\fmm \frac{A_c^2}{4(D+1)\eta B}$ &   $\fmm \frac{A_c^2}{4(D+1)\eta B}$ \\ \hline
+  Ausgangsnutzsignal $X_o(t)$ & $k_p \cdot X(t)$ & $k_f \cdot X(t)$ \\ \hline
+  Leistung $S_o$ von $X_o(t)$ & $k_p^2 \cdot S_X$ & $k_f^2 \cdot S_X$ \\ \hline
+  Rauschleistung $S_{No}$ von $N_o(t)$ & $\fmm \frac{2}{A_c^2} \eta B$ & $\fmm \frac{2(2\pi B)^2}{3A_c^2} \eta B$ \\ \hline
+  $\text{SNR}_o$ & $\fmm \frac{k_p^2 A_c^2 S_x}{2 \eta B}$ & $\fmm \frac{3 D^2 A_c^2 S_X}{2 \eta B}$ \\ \hline
+  $\text{SNR}_o$ mit $\gamma$ & $k_p^2 \cdot S_x \cdot \gamma $ & $3 D^2 \cdot S_X \cdot \gamma$ \\ \hline
 \end{tabular}
 \end{footnotesize}
 
