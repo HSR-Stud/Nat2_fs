@@ -1262,9 +1262,7 @@ $$x^{n-k} \cdot d(x) = q(x) \cdot g(x) + p(x)$$
   \item \textbf{\color{cRed}  Phase 2:} Ausgabe von $p(x) = $ Rest. ($n-k$ Zyklen)
 \end{itemize}
 
-\section{Anhang}
-
-\subsection{Fourier Transformation}
+\section{Fourier Transformation}
 $$X(\omega) = \fourier(x(t)) = \int_{-\infty}^\infty x(t) \cdot e^{-j \omega t} \cdogt dt $$
 $$x(t) = \fourier^{-1}(X(\omega)) = \frac{1}{2\pi} \int_{-\infty}^\infty X(\omega) \cdot e^{j \omega t} \cdot d\omega$$
 
@@ -1281,8 +1279,6 @@ $$x(t) = \fourier^{-1}(X(\omega)) = \frac{1}{2\pi} \int_{-\infty}^\infty X(\omeg
   Ableitung nach $t$ & $\dot{x}(t)$ & $j \omega X(\omega)$ \\
   Ableitung nach $\omega$ & $-j t x(t)$ & $X'(\omega)$ \\
   Integration & $\int_{-\infty}^t x(\tau) d\tau$ & $\frac{1}{j\omega} X(\omega) + \pi X(\omega) \delta(\omega)$  \\
-  Convolution & $x_1(t) \ast x_2(t)$ & $X_1(\omega) \cdot X_2(\omega)$ \\
-  Multiplication & $x_1(t) \cdot x_2(t)$ & $\frac{1}{2\pi} X_1(\omega) \ast X_2(\omega)$ 
 \end{tabular}
 
 \subsubsection{Einige Transformationspaare}
