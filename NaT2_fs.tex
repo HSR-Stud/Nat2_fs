@@ -722,7 +722,10 @@ Das \cdef{Lineare Filter $H(\omega)$} soll die Fehler-WSK zum \cdef{Zeitpunkt $T
     $\fmm h(t) = \left\{ \begin{array}{ll} s(T-t) & 0 \leq t \leq T \\ 0 & \text{sonst} \end{array} \right.$ \\
     $\fmm \left(\frac{S}{N}\right)_{o_{max}} = \frac{(a_1 - a_2)^2}{\sigma_{n_0}^2} = \frac{2E_d}{\eta}$ \\
     $\fmm E_d = \int_0^T \left[ s_1(t) - s_2(t) \right]^2 dt$ \\
-    $\fmm P_e = Q\left(\frac{a_1 - a_2}{2 \sigma_{n_0}}\right) = Q\left(\sqrt{\frac{E_d}{2\eta}}\right)$
+    $\fmm P_e = Q\left(\frac{a_1 - a_2}{2 \sigma_{n_0}}\right) = Q\left(\sqrt{\frac{E_d}{2\eta}}\right)$ \\
+    $\fmm \text{wenn } \: a_1 = -a_2 = A \rightarrow \lambda_0 = \frac{\sigma_{n_0}^2}{2A}
+    \cdot \ln{\frac{P(s_1)}{P(s_2)}}$
+  
   \end{tabular}
 \end{tabular}
 
@@ -936,6 +939,7 @@ Kanal maximiert. Dabei ist da Eingangs- und Ausgangsalphabet, sowie die Kanalmat
 \cdef{$r$: Symbolrate}
 
 $$C = r \cdot C_s = r \cdot \max I(X,Y)$$
+$$C = B \cdot \log_2{(1+ \text{SNR})} \left[\frac{b}{s}\right]$$
 
 \section{Quellenkodierung}
 \begin{itemize}
@@ -1300,7 +1304,8 @@ $$x(t) = \fourier^{-1}(X(\omega)) = \frac{1}{2\pi} \int_{-\infty}^\infty X(\omeg
   $\fmm e^{-t^2 / 2\sigma^2 }$ & $\sigma \sqrt{2\pi} \cdot e^{-\sigma^2 \omega^2 / 2}$ \\
   $p_a(t) = \left\{ \begin{array}{ll} 1 & \text{falls } \abs{t} < a \\ 0 & \text{sonst} \end{array} \right.$ & $\fmm 2a \cdot \frac{\sin \omega a}{\omega a}$ \\
   $\fmm \frac{\sin at}{\pi t}$ & $p_a(\omega) = \left\{ \begin{array}{ll} 1 & \text{falls } \abs{\omega} < a \\ 0 & \text{sonst} \end{array} \right.$ \\
-  $\Lambda_a(t) = \left\{ \begin{array}{ll} 1 - \frac{\abs{t}}{a} & \text{falls } \abs{t} < a \\ 0 & \text{sonst} \end{array} \right.$ & $\fmm a \left[ \frac{\sin \left(\frac{\omega a}{2}\right)}{\frac{\omega a}{2}} \right]^2$ \\
+  $\Lambda_a(t) = \left\{ \begin{array}{ll} 1 - \frac{\abs{t}}{a} & \text{falls } \abs{t} < a
+  \\ 0 & \text{sonst} \end{array} \right.$ & $\fmm \frac{a}{2} \left[ \frac{\sin \left(\frac{\omega a}{2}\right)}{\frac{\omega a}{2}} \right]^2$ \\
   $\fmm \sum_{n = -\infty}^{\infty} \delta(t - nT)$ & $\fmm \frac{2\pi}{T} \sum_{n = -\infty}^{\infty} \delta(\omega - n \frac{2\pi}{T})$ \\
   $\fmm \hat{x}(t) = \frac{1}{\pi} \int_{-\infty}^\infty \frac{x(\tau)}{t - \tau}d \tau$ & $-j \sgn(\omega) \cdot X(\omega)$ \\
 \end{tabular}
