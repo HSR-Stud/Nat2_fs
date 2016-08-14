@@ -164,7 +164,7 @@ eintritt.
   \begin{tabular}{c}
     $\fmm \mu_X = n \cdot p \quad \sigma_x^2 = n p \cdot (1-p) $ \\
     $\fmm p_X(k) = \binom{n}{k} p^k \cdot (1-p)^{n-k}$ \\
-    $\fmm F_X(x) = \sum_{k=0}^m \binom{n}{k} p^k \cdot (1-p)^{n-k}$ \\
+    $\fmm F_X(x) = \sum_{k=0}^x \binom{n}{k} p^k \cdot (1-p)^{n-k}$ \\
     \textbf{Grafik:} $p=0.4$, $n=100$
   \end{tabular} & 
   \begin{tabular}{l}
@@ -429,13 +429,13 @@ Auto- und Kreuz\textbf{kovarianz} be WSS Prozessen:
 Spektrale \textbf{Leistung} bei WSS Prozessen:
 \vspace{0.5em}
 
-\begin{tabularx}{\columnwidth}{Y}
+\begin{tabular}{c}
   $\fmm S_{XX}(\omega) = E \left[ \lim_{T\rightarrow \infty} \frac{1}{T} \cdot
-  \abd{X(\omega)}^2 \right] = \lim_{T\rightarrow \infty} \frac{1}{T} \cdot E\left[
+  \abs{X(\omega)}^2 \right] = \lim_{T\rightarrow \infty} \frac{1}{T} \cdot E\left[
   \abs{X(\omega)}^2 \right]$ \\
   $\fmm S_{XX}(\omega) = \infint R_{XX}(\tau) \cdot e^{-j \omega \tau}d \tau \qquad
   R_{XX}(\tau) = \frac{1}{2\pi} \infint S_{XX}(\omega) \cdot e^{j \omega \tau} d\omega$
-\end{tabularx}
+\end{tabular}
 
 \subsection{Übertragung von Zufallsprozessen über LTI-Systeme}
 \begin{tabular}{cl}
@@ -538,7 +538,8 @@ Spektrale \textbf{Leistung} bei WSS Prozessen:
       \draw [draw = cRed, thick] (axis cs:-1.5,0) -- (axis cs:-1,0) -- (axis cs:0,1) -- (axis cs:1,0) -- (axis cs:1.5,0);
     \end{axis}
   \end{tikzpicture}
-  \item $\mathcal{F}(R_{XX}(\tau)) \Rightarrow S_{XX}(\omega)$ 
+  \item $\fmm R_{XX}(\tau) \hlaplace S_{XX}(\omega) \qquad P_X = R_{XX}(0) \qquad P_{DC} = \left[ \sum_i x_i
+  \cdot p_X(x_i) \right]^2$
   
 \end{enumerate}
 
@@ -571,9 +572,7 @@ Das Nachrichtensignal ist ein \begin{definition}Zufallsprozess $X(t)$\end{defini
 $\abs{X(t)} \leq 1$, bzw. $\abs{x_\lambda(t)} \leq 1$ für alle $\lambda$ des Ereignisraums 
 $s$. Die \begin{definition}Leistung $S_X$\end{definition} $= S_X(t) = \E[X^2(t)] \leq 1$. 
 Ausserdem ist das Signal $X(t)$ bandbeschränkt mit der 
-\begin{definition}Bandbreite $B$\end{definition}.
-
-\cdef{Addititive white gaussian noise: AWGN}
+\begin{definition}Bandbreite $B$\end{definition}. $S_x = x^2_{rms}$
 
 \begin{footnotesize}
 \begin{tabular}{|c|c|c|c|}
@@ -600,8 +599,7 @@ Ausserdem ist das Signal $X(t)$ bandbeschränkt mit der
   $\text{SNR}_i$ & $\fmm \frac{A_c^2}{4(D+1)\eta B}$ &   $\fmm \frac{A_c^2}{4(D+1)\eta B}$ \\ \hline
   Ausgangsnutzsignal $X_o(t)$ & $k_p \cdot X(t)$ & $k_f \cdot X(t)$ \\ \hline
   Leistung $S_o$ von $X_o(t)$ & $k_p^2 \cdot S_X$ & $k_f^2 \cdot S_X$ \\ \hline
-  Rauschleistung $S_{No}$ von $N_o(t)$ & $\fmm \frac{2}{A_c^2} \eta B$ & $\fmm \frac{2(2\pi B)^2}{3A_c^2} \eta B$ \\ \hline
-  $\text{SNR}_o$ & $\fmm \frac{k_p^2 A_c^2 S_x}{2 \eta B}$ & $\fmm \frac{3 D^2 A_c^2 S_X}{2 \eta B}$ \\ \hline
+  Rauschleistung $S_{No}$ von $N_o(t)$ & $\fmm \frac{2}{A_c^2} \eta B$ & $\fmm \frac{2(2\pi B)^2}{3A_c^2} \eta B$ \\ \hline $\text{SNR}_o$ & $\fmm \frac{k_p^2 A_c^2 S_x}{2 \eta B}$ & $\fmm \frac{3 D^2 A_c^2 S_X}{2 \eta B}$ \\ \hline
   $\text{SNR}_o$ mit $\gamma$ & $k_p^2 \cdot S_x \cdot \gamma $ & $3 D^2 \cdot S_X \cdot \gamma$ \\ \hline
 \end{tabular}
 \end{footnotesize}
@@ -609,7 +607,8 @@ Ausserdem ist das Signal $X(t)$ bandbeschränkt mit der
 
 \subsection{Rauschen bei Winklemodulierten Systemen}
 
-Bei den PM- / FM-Systemen gilt für das \cdef{Hubverhältnis $D$} $ = \frac{\Delta f}{B_m} = \frac{\delta \omega}{W_m}$ 
+Bei den PM- / FM-Systemen gilt für das \cdef{Hubverhältnis $D$} $ = \frac{\Delta f}{B_m} = \frac{\delta
+\omega}{W_m} = \frac{B_c}{2 \cdot B_m}$
 
 \begin{tabular}{c}
   $\fmm Y_i(t) = A_c \cos(\omega_c t + \varphi(t)) + n_i(t) \quad \text{mit} \quad S_i = \frac{1}{2} A_c^2$ \\
@@ -670,7 +669,7 @@ $$
 Ein \cdef{Bitfehler} ist, wenn das falsche Bit erkannt wird. Bei Soft-Descision bildet die 
 W'keit ein Anhaltspunkt für mögliche Bitfehler. bei Hard-Descision kann mit folgender 
 Fehlerw'keit gerechnet werden:
-$$P_e = P(H_2 | s_1) <cdot P(s_1) + P(H_1 | s_2) \cdot P(s_2)$$
+$$P_e = P(H_2 | s_1) \cdot P(s_1) + P(H_1 | s_2) \cdot P(s_2)$$
 $$P_e = \frac{1}{2} \left[ P(H_2 | s_1) + p(H_1 | s_2) \right], \quad \text{wenn: } P(s_1) = P(s_2) = \frac{1}{2} $$
 
 \subsection{Maximum Likelihood Detector}
@@ -714,6 +713,7 @@ Das \cdef{Lineare Filter $H(\omega)$} soll die Fehler-WSK zum \cdef{Zeitpunkt $T
     \cdef{$S(\omega)$} & \cdef{Spektrale Leistung des Signals} \\
     \cdef{$E_d$} & \cdef{Energie des Differenzsignals $s(t)$}\\
     \cdef{$P_e$} & \cdef{Fehlerwahrscheinlichkeit} \\
+    \cdef{$\lambda_0$} & \cdef{Optimaler Schwellenwert}
   \end{tabular} &
   
   \begin{tabular}{c}
@@ -723,8 +723,8 @@ Das \cdef{Lineare Filter $H(\omega)$} soll die Fehler-WSK zum \cdef{Zeitpunkt $T
     $\fmm \left(\frac{S}{N}\right)_{o_{max}} = \frac{(a_1 - a_2)^2}{\sigma_{n_0}^2} = \frac{2E_d}{\eta}$ \\
     $\fmm E_d = \int_0^T \left[ s_1(t) - s_2(t) \right]^2 dt$ \\
     $\fmm P_e = Q\left(\frac{a_1 - a_2}{2 \sigma_{n_0}}\right) = Q\left(\sqrt{\frac{E_d}{2\eta}}\right)$ \\
-    $\fmm \text{wenn } \: a_1 = -a_2 = A \rightarrow \lambda_0 = \frac{\sigma_{n_0}^2}{2A}
-    \cdot \ln{\frac{P(s_1)}{P(s_2)}}$
+    $\fmm \lambda_0 = \frac{\sigma_{n_0}^2}{2A} \cdot \ln{\frac{P(s_1)}{P(s_2)}} \: \text{wenn } \: a_1 = -a_2
+    = A$
   
   \end{tabular}
 \end{tabular}
@@ -774,7 +774,8 @@ $$\underbrace{z(t) = r(t) \ast h(t) = \int_0^t r(\tau) h(t-\tau) d\tau}_{\text{M
 \subsection{Kanaldarstellung}
 
 Die \cdef{Kanalmatrix} gibt für jedes gesendete Symbol $x_i$ die bedingte Wahrscheinlichkeit 
-$P(y_i|y_i)$ an, dass der Empfänger ein $y_i$ dedektiert. 
+$P(y_i|y_i)$ an, dass der Empfänger ein $y_i$ dedektiert. \cdef{$m$: Anzahl Eingangssymbole}, \cdef{$n$:
+Anzahl Ausgangssymbole}.
 
 $$[P(Y|X)] = \left[ \begin{array}{cccc} 
   P(y_1|x_1) & P(y_1|x_1) & \ldots & P(y_n|x_1) \\
@@ -794,7 +795,9 @@ $$[P(Y,X)] = \left[ \begin{array}{cccc}
 \end{array} \right]$$
 
 \begin{center}
-\begin{tabular}{cc}
+\begin{tabular}{ccl}
+  
+  \textbf{Kanalmatrix} & \textbf{Kanaldiagramm} & $\mathbf{C_s}$ \\ 
   
   \begin{tabular}{l}
     \textbf{Verlustloser Kanal}: \\
@@ -820,9 +823,11 @@ $$[P(Y,X)] = \left[ \begin{array}{cccc}
       \draw [*-*] (0,0) -- (3,-1) node[right] {$y_2$};
       \draw [->] (0,0) -- (1.5,-0.5) node[above, yshift=-0.5mm] {\scriptsize $1$};
     \end{tikzpicture}
+  \end{tabular} &
+  \begin{tabular}{l}
+    $C_s = H(X)$ \\
+    $C_s = \log_2 (m)$ \\
   \end{tabular} \\
-  
-  \midrule
   
   \begin{tabular}{l}
     \textbf{Deterministischer Kanal}: \\
@@ -852,9 +857,11 @@ $$[P(Y,X)] = \left[ \begin{array}{cccc}
       \draw [*-*] (0,0) -- (3,1) node[right] {$y_2$};
       \draw [->] (0,0) -- (1.5,0.5) node[above, yshift=-0.5mm] {\scriptsize $1$};
     \end{tikzpicture}
+  \end{tabular}  &
+  \begin{tabular}{l}
+    $C_s = H(Y)$ \\
+    $C_s = \log_2 (n)$ \\
   \end{tabular} \\
-  
-  \midrule
   
   \begin{tabular}{l}
     \textbf{Rauschfreier Kanal}: \\
@@ -880,8 +887,13 @@ $$[P(Y,X)] = \left[ \begin{array}{cccc}
       \draw [*-*] (0,0) -- (3,0) node[right] {$y_4$};
       \draw [->] (0,0) -- (1.5,0) node[above, yshift=-0.5mm] {\scriptsize $1$};
     \end{tikzpicture}
+  \end{tabular}  &
+  \begin{tabular}{l}
+    $C_s = H(X)$\\
+    $C_s = H(Y)$ \\
+    $C_S = \log_2 (n)$ \\
+    $C_s = \log_2 (m)$ \\
   \end{tabular} \\
-  \midrule
   
   \begin{tabular}{l}
     \textbf{Binärer symmetrischer Kanal}: \\
@@ -904,6 +916,9 @@ $$[P(Y,X)] = \left[ \begin{array}{cccc}
       \draw [->] (0,2) -- (2,2/3) node[above,right, yshift=0.5mm] {\scriptsize$p$};
       \draw [->] (0,0) -- (1,2/3) node[above,left, yshift=0.5mm] {\scriptsize$p$};
     \end{tikzpicture}
+  \end{tabular}  &
+  \begin{tabular}{l}
+    $C_s = 1 + p \log_2 p + (1-p) \log_2 (1-p) $ \\
   \end{tabular} \\
 \end{tabular}
 \end{center}
@@ -933,7 +948,7 @@ $$[P(Y,X)] = \left[ \begin{array}{cccc}
 
 $$H(X,Y) = H(X|Y) + H(Y) = H(Y|X) + H(X)$$
 $$I(X,Y) = H(X) - H(X|Y) = H(Y) - H(Y|X) = I(Y,X)$$
-$$I(X,Y) = H(X) + H(Y) - H(X,Y)$$
+$$I(X,Y) = H(X) + H(Y) - H(X,Y) = C_s \: \text{Wenn } \: I(X,Y) \: \text{maximal}$$
 
 \subsection{Kanalkapazität}
 Die \cdef{Kanalkapazität $C_s$, $C$} ist die W'keitsverteilung von $X$, welche den Informationsfluss über den 
@@ -1105,15 +1120,15 @@ $$G=\left[ \begin{array}{llllllll}
 
 \subsubsection{Paritätsprüfmatrix $H$}
 Mit dieser Matrix können Übertragungsfehler erkannt werden. $O$ ist die $[k \times m]$ 
-Nullmatrix, $\cn{0}$ ist der $[1 \times m]$ Nullvektor
+Nullmatrix, $\cn{0}$ ist der $[1 \times m]$ Nullvektor. \cdef{$m = n - k$: Anzahl Paritätsbits}
 
 $$H = \left[ \begin{array}{ll} P & I_m \end{array} \right] \qquad H^T = 
 \left[ \begin{array}{l} P^T \\ I_m \end{array} \right]$$
 $$G \odot H^T = O \qquad \cn{c} \odot H^T = \cn{d} \odot G \odot H^T = \cn{0}$$
 $$\text{Wenn:} \: \cn{c} \odot H^T = 0 \: \rightarrow \: \text{keine Fehler bei der Übertragung}$$
 
-Die minimale Hamming-Distanz $d_{min}$ von $C$ entspricht somit der minimalen Anzahl Zeilen 
-von $H^T$, welche linear kombiniert den Nullvektor $\cn{0}$ ergeben. 
+Die minimale Hamming-Distanz $d_{min}$ von $C$ entspricht somit der minimalen Anzahl
+Spalten / Zeilen von $H^T$, welche linear kombiniert den Nullvektor $\cn{0}$ ergeben. 
 \cdef{$\cn{c}_r$ ist das empfangene Codewort}, welches maximal \cdef{$t$ Fehler} haben kann, um das Codewort korrigieren zu können.
 
 $$\cn{c_r} = \cn{c} \oplus \cn{e}$$ 
@@ -1125,7 +1140,7 @@ So kann das empfangene Codewort $\cn{c_r}$ korrigiert werden.
 
 $$2^{n-k} \geq \sum_{i=0}^t \binom{n}{i}$$
 
-Gilt das Gleichheitszeichen, handelt es sich um einen so genannten perfekten Code. 
+Gilt das Gleichheitszeichen, handelt es sich um einen so genannten \textbf{perfekten Code}. 
 Ein perfekter Code, der nur Einzelfehler korrigieren kann, nennt man \cdef{Hamming-Code}.
 
 \subsection{Zyklische Lineare Codes}
@@ -1161,7 +1176,7 @@ $$c^{(i)}(x) = c_{n-i} + c_{n-(i-1)} x + \ldots + c_{n-1} x^{i-1} + c_0 x^i + c_
 $$c^{(i)}(x) = x^i c(x) \: \mod \left(1+x^n\right)$$
 
 \subsubsection{Fundamentales Theorem für zyklische Codes}
-Gegeben sei das \cdef{Generatorpolynom $g(x)$} mit der Ordnung $(n-k)$. 
+Gegeben sei das \cdef{Generatorpolynom $g(x)$} mit der \textbf{Ordnung} $\mathbf{(n-k)}$. 
 Jeder $(n,\,k)$ zyklische Code $C$ kann mit Hilfe eines solchen Polynoms $g(x)$ gebildet werden:
 
 $$\text{\textbf{Bedingungen}:} \qquad g_{n-k} = g_0 = 1 \qquad (x^n + 1) = q(x) \odot g(x) \quad \text{(ohne Rest)}$$
@@ -1176,10 +1191,14 @@ $$s(x) = c_r(x) \: \mod g(x)$$
 $$s(x) = e(x) \: \mod g(x)$$
 
 
-\subsubsection{Generatormatrix}
+\subsubsection{Generatormatrix $G \: [n \times k]$ }
 \begin{tabular}{p{0.5\columnwidth}l}
-  Die Zeilen einer beliebigen Generatormatrix $G$ bestehen aus $k$ gültigen unabhängigen Codewörters & 
-  $G = \left(\begin{array}{c} g(x) \\ x \cdot g(x) \\ \vdots \\ x^{k-1} \cdot g(x) \end{array}\right)$
+  \begin{tabular}{p{.45\columnwidth}} 
+    Die Zeilen einer beliebigen Generatormatrix $G$ bestehen aus $k$ gültigen unabhängigen Codewörtern. 
+    In erster Zeile steht das Generatorpolynim $g(x)$, hinten aufgefüllt mit $0$.
+  \end{tabular}
+  
+  & $G = \left(\begin{array}{c} g(x) \\ x \cdot g(x) \\ \vdots \\ x^{k-1} \cdot g(x) \end{array}\right)$
 \end{tabular}
 
 
@@ -1269,7 +1288,7 @@ $$x^{n-k} \cdot d(x) = q(x) \cdot g(x) + p(x)$$
 \end{itemize}
 
 \section{Fourier Transformation}
-$$X(\omega) = \fourier(x(t)) = \int_{-\infty}^\infty x(t) \cdot e^{-j \omega t} \cdogt dt $$
+$$X(\omega) = \fourier(x(t)) = \int_{-\infty}^\infty x(t) \cdot e^{-j \omega t} \cdot dt $$
 $$x(t) = \fourier^{-1}(X(\omega)) = \frac{1}{2\pi} \int_{-\infty}^\infty X(\omega) \cdot e^{j \omega t} \cdot d\omega$$
 
 \subsubsection{Eigenschaften}
@@ -1390,6 +1409,64 @@ $$x(t) = \fourier^{-1}(X(\omega)) = \frac{1}{2\pi} \int_{-\infty}^\infty X(\omeg
 %     \end{tikzpicture}
 %   \end{tabular}
 % \end{tabular}
+
+
+\onecolumn
+\begin{landscape}
+\section{Q-Funktion}
+\renewcommand{\arraystretch}{1.25}
+$$ 
+\begin{tabu}{cc||cc||cc||cc}
+x & Q(x) & x & Q(x) & x & Q(x) & x & Q(x)\\ \toprule
+0.00 & 0.5 & 2.30 & 0.010724 & 4.55 & 2.6823 \cdot 10^{-6} & 6.80 & 5.231 \cdot 10^{-12}\\
+0.05 & 0.48006 & 2.35 & 0.0093867 & 4.60 & 2.1125 \cdot 10^{-6} & 6.85 & 3.6925 \cdot 10^{-12}\\
+0.10 & 0.46017 & 2.40 & 0.0081975 & 4.65 & 1.6597 \cdot 10^{-6} & 6.90 & 2.6001 \cdot 10^{-12}\\ 
+0.15 & 0.44038 & 2.45 & 0.0071428 & 4.70 & 1.3008 \cdot 10^{-6} & 6.95 & 1.8264 \cdot 10^{-12}\\
+0.20 & 0.42074 & 2.50 & 0.0062097 & 4.75 & 1.0171 \cdot 10^{-6} & 7.00 & 1.2798 \cdot 10^{-12}\\
+0.25 & 0.40129 & 2.55 & 0.0053861 & 4.80 & 7.9333 \cdot 10^{-7} & 7.05 & 8.9459 \cdot 10^{-13}\\
+0.30 & 0.38209 & 2.60 & 0.0046612 & 4.85 & 6.1731 \cdot 10^{-7} & 7.10 & 6.2378 \cdot 10^{-13}\\
+0.35 & 0.36317 & 2.65 & 0.0040246 & 4.90 & 4.7918 \cdot 10^{-7} & 7.15 & 4.3389 \cdot 10^{-13}\\
+0.40 & 0.34458 & 2.70 & 0.003467 & 4.95 & 3.7107 \cdot 10^{-7} & 7.20 & 3.0106 \cdot 10^{-13}\\
+0.45 & 0.32636 & 2.75 & 0.0029798 & 5.00 & 2.8665 \cdot 10^{-7} & 7.25 & 2.0839 \cdot 10^{-13}\\
+0.50 & 0.30854 & 2.80 & 0.0025551 & 5.05 & 2.2091 \cdot 10^{-7} & 7.30 & 1.4388 \cdot 10^{-13}\\
+0.55 & 0.29116 & 2.85 & 0.002186 & 5.10 & 1.6983 \cdot 10^{-7} & 7.35 & 9.9103 \cdot 10^{-14}\\
+0.60 & 0.27425 & 2.90 & 0.0018658 & 5.15 & 1.3024 \cdot 10^{-7} & 7.40 & 6.8092 \cdot 10^{-14}\\
+0.65 & 0.25785 & 2.95 & 0.0015889 & 5.20 & 9.9644 \cdot 10^{-8} & 7.45 & 4.667 \cdot 10^{-14}\\
+0.70 & 0.24196 & 3.00 & 0.0013499 & 5.25 & 7.605 \cdot 10^{-8} & 7.50 & 3.1909 \cdot 10^{-14}\\
+0.75 & 0.22663 & 3.05 & 0.0011442 & 5.30 & 5.7901 \cdot 10^{-8} & 7.55 & 2.1763 \cdot 10^{-14}\\
+0.80 & 0.21186 & 3.10 & 0.0009676 & 5.35 & 4.3977 \cdot 10^{-8} & 7.60 & 1.4807 \cdot 10^{-14}\\
+0.85 & 0.19766 & 3.15 & 0.00081635 & 5.40 & 3.332 \cdot 10^{-8} & 7.65 & 1.0049 \cdot 10^{-14}\\
+0.90 & 0.18406 & 3.20 & 0.00068714 & 5.45 & 2.5185 \cdot 10^{-8} & 7.70 & 6.8033 \cdot 10^{-15}\\
+0.95 & 0.17106 & 3.25 & 0.00057703 & 5.50 & 1.899 \cdot 10^{-8} & 7.75 & 4.5946 \cdot 10^{-15}\\
+1.00 & 0.15866 & 3.30 & 0.00048342 & 5.55 & 1.4283 \cdot 10^{-8} & 7.80 & 3.0954 \cdot 10^{-15}\\
+1.05 & 0.14686 & 3.35 & 0.00040406 & 5.60 & 1.0718 \cdot 10^{-8} & 7.85 & 2.0802 \cdot 10^{-15}\\
+1.10 & 0.13567 & 3.40 & 0.00033693 & 5.65 & 8.0224 \cdot 10^{-9} & 7.90 & 1.3945 \cdot 10^{-15}\\
+1.15 & 0.12507 & 3.45 & 0.00028029 & 5.70 & 5.9904 \cdot 10^{-9} & 7.95 & 9.3256 \cdot 10^{-16}\\
+1.20 & 0.11507 & 3.50 & 0.00023263 & 5.75 & 4.4622 \cdot 10^{-9} & 8.00 & 6.221 \cdot 10^{-16}\\
+1.25 & 0.10565 & 3.55 & 0.00019262 & 5.80 & 3.3157 \cdot 10^{-9} & 8.05 & 4.1397 \cdot 10^{-16}\\
+1.30 & 0.0968 & 3.60 & 0.00015911 & 5.85 & 2.4579 \cdot 10^{-9} & 8.10 & 2.748 \cdot 10^{-16}\\
+1.35 & 0.088508 & 3.65 & 0.00013112 & 5.90 & 1.8175 \cdot 10^{-9} & 8.15 & 1.8196 \cdot 10^{-16}\\
+1.40 & 0.080757 & 3.70 & 0.0001078 & 5.95 & 1.3407 \cdot 10^{-9} & 8.20 & 1.2019 \cdot 10^{-16}\\
+1.45 & 0.073529 & 3.75 & 8.8417 \cdot 10^{-5} & 6.00 & 9.8659 \cdot 10^{-10} & 8.25 & 7.9197 \cdot 10^{-17}\\
+1.50 & 0.066807 & 3.80 & 7.2348 \cdot 10^{-5} & 6.05 & 7.2423 \cdot 10^{-10} & 8.30 & 5.2056 \cdot 10^{-17}\\
+1.55 & 0.060571 & 3.85 & 5.9059 \cdot 10^{-5} & 6.10 & 5.3034 \cdot 10^{-10} & 8.35 & 3.4131 \cdot 10^{-17}\\
+1.60 & 0.054799 & 3.90 & 4.8096 \cdot 10^{-5} & 6.15 & 3.8741 \cdot 10^{-10} & 8.40 & 2.2324 \cdot 10^{-17}\\
+1.65 & 0.049471 & 3.95 & 3.9076 \cdot 10^{-5} & 6.20 & 2.8232 \cdot 10^{-10} & 8.45 & 1.4565 \cdot 10^{-17}\\
+1.70 & 0.044565 & 4.00 & 3.1671 \cdot 10^{-5} & 6.25 & 2.0523 \cdot 10^{-10} & 8.50 & 9.4795 \cdot 10^{-18}\\
+1.75 & 0.040059 & 4.05 & 2.5609 \cdot 10^{-5} & 6.30 & 1.4882 \cdot 10^{-10} & 8.55 & 6.1544 \cdot 10^{-18}\\
+1.80 & 0.03593 & 4.10 & 2.0658 \cdot 10^{-5} & 6.35 & 1.0766 \cdot 10^{-10} & 8.60 & 3.9858 \cdot 10^{-18}\\
+1.85 & 0.032157 & 4.15 & 1.6624 \cdot 10^{-5} & 6.40 & 7.7688 \cdot 10^{-11} & 8.65 & 2.575 \cdot 10^{-18}\\
+1.90 & 0.028717 & 4.20 & 1.3346 \cdot 10^{-5} & 6.45 & 5.5925 \cdot 10^{-11} & 8.70 & 1.6594 \cdot 10^{-18}\\
+1.95 & 0.025588 & 4.25 & 1.0689 \cdot 10^{-5} & 6.50 & 4.016 \cdot 10^{-11} & 8.75 & 1.0668 \cdot 10^{-18}\\
+2.00 & 0.02275 & 4.30 & 8.5399 \cdot 10^{-6} & 6.55 & 2.8769 \cdot 10^{-11} & 8.80 & 6.8408 \cdot 10^{-19}\\
+2.05 & 0.020182 & 4.35 & 6.8069 \cdot 10^{-6} & 6.60 & 2.0558 \cdot 10^{-11} & 8.85 & 4.376 \cdot 10^{-19}\\
+2.10 & 0.017864 & 4.40 & 5.4125 \cdot 10^{-6} & 6.65 & 1.4655 \cdot 10^{-11} & 8.90 & 2.7923 \cdot 10^{-19}\\
+2.15 & 0.015778 & 4.45 & 4.2935 \cdot 10^{-6} & 6.70 & 1.0421 \cdot 10^{-11} & 8.95 & 1.7774 \cdot 10^{-19}\\
+2.20 & 0.013903 & 4.50 & 3.3977 \cdot 10^{-6} & 6.75 & 7.3923 \cdot 10^{-12} & 9.00 & 1.1286 \cdot 10^{-19}\\
+2.25 & 0.012224\\
+\end{tabu} 
+$$
+\end{landscape}
 
 \end{twocolumn}
 \end{document}

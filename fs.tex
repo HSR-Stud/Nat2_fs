@@ -29,6 +29,8 @@
 \usepgfplotslibrary{fillbetween}
 \usepackage{listings}
 \usepackage{mathrsfs}
+\usepackage{tabu}
+\usepackage{pdflscape}
 \usepackage{booktabs}
 %\usepackage{mathabx}
 
@@ -229,6 +231,9 @@
   numbers=none,
   backgroundcolor=\color{lbcolor}
 }
+
+
+\newcolumntype{M}{>{$}c<{$}} % math-mode version of "c" column type
 
 %header & footer
 \pagestyle{fancy}
