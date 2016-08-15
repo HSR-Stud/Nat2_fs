@@ -608,7 +608,7 @@ Ausserdem ist das Signal $X(t)$ bandbeschränkt mit der
 \subsection{Rauschen bei Winklemodulierten Systemen}
 
 Bei den PM- / FM-Systemen gilt für das \cdef{Hubverhältnis $D$} $ = \frac{\Delta f}{B_m} = \frac{\delta
-\omega}{W_m} = \frac{B_c}{2 \cdot B_m}$
+\omega}{W_m} = \frac{B_c}{2 \cdot B_m} - 1$
 
 \begin{tabular}{c}
   $\fmm Y_i(t) = A_c \cos(\omega_c t + \varphi(t)) + n_i(t) \quad \text{mit} \quad S_i = \frac{1}{2} A_c^2$ \\
@@ -953,7 +953,7 @@ $$I(X,Y) = H(X) + H(Y) - H(X,Y) = C_s \: \text{Wenn } \: I(X,Y) \: \text{maximal
 \subsection{Kanalkapazität}
 Die \cdef{Kanalkapazität $C_s$, $C$} ist die W'keitsverteilung von $X$, welche den Informationsfluss über den 
 Kanal maximiert. Dabei ist da Eingangs- und Ausgangsalphabet, sowie die Kanalmatrix $P(Y|X)$ gegeben. Hier ist 
-\cdef{$r$: Symbolrate}
+\cdef{$r$: Symbolrate}. Wenn $\mathbf{C > r \cdot H(X)}$ kann der Code \textbf{fehlerfrei übertragen} werden.
 
 $$C = r \cdot C_s = r \cdot \max I(X,Y)$$
 $$C = B \cdot \log_2{(1+ \text{SNR})} \left[\frac{b}{s}\right]$$
@@ -978,11 +978,14 @@ Jeder Instantaneous Code, welcher eine minimale Codelänge besitzt, ist ein opti
     \cdef{$L$} & \cdef{Mittlere Codelänge} \\
     \cdef{$\eta$} & \cdef{Effizienz der Codierung} \\
     \cdef{$R$} & \cdef{Redundanz der Codierung} \\
+    \cdef{$R_i$} & \cdef{Redundanz der Informationsquelle} \\
+    \cdef{$m$} & \cdef{Anzahl Zeichen im Alphabet}\\
   \end{tabular} &
   \begin{tabular}{l}
     $\fmm L = \sum_i  P(x_i) \cdot n_i \geq H(X)$ \\
     $\fmm \eta = \frac{H(X)}{L}$ \\
-    $\fmm R = L - H(X)$
+    $\fmm R = L - H(X)$\\
+    $\fmm R_i = H_{max}(X) - H(X)$ \\ $ R_i = \log_2(m) - H(X)$
   \end{tabular}
 \end{tabular}
 
@@ -1466,6 +1469,30 @@ x & Q(x) & x & Q(x) & x & Q(x) & x & Q(x)\\ \toprule
 2.25 & 0.012224\\
 \end{tabu} 
 $$
+
+\newpage
+\section{Generatorpolynom $g(x)$ eines Zyklischen $(n,k)$-Codes}
+
+Folgende Tabelle zeigt alle möglichen Kombinatuionen, um ein Generatorpolynom zu erstellen. Die gewünschte
+Ordnung muss erreicht werden, indem verschiedene Faktoren zusammengenommen werden. 
+
+\textbf{Bespiel}: Ein $(7,3)$-Code hat ein Generatorpolynom der Ordnung 4. Ausserdem muss $(x^7 + 1) =
+q(x)\odot g(x))$ sein. Das Generatorpolynom ist nun eine Kombination entweder $(x+1) \odot (x^3 + x + 1)$ oder
+$(x + 1) \odot (x^3 + x^2 + 1)$.
+
+\begin{center} 
+\begin{tabular}{>{$}l<{$} >{$}l<{$} >{$}l<{$}} 
+  (x^{10} + 1) & = & (x+1)^2 \odot (x^4 + x^3 + x^2 + x + 1) \\
+  (x^9 + 1) & = & (x+1) \odot (x^2 + x + 1) \odot (x^6 + x^3 + 1) \\
+  (x^8 + 1) & = & (x+1)^8 \\
+  (x^7 + 1) & = & (x+1) \odot (x^3 + x + 1) \odot (x^3 + x^2 + 1) \\
+  (x^6 + 1) & = & (x+1)^2 \odot (x^2 + x + 1)^2 \\
+  (x^5 + 1) & = & (x+1) \odot (x^4 + x^3 + x^2 + x + 1) \\
+  (x^4 + 1) & = & (x+1)^4 \\
+  (x^3 + 1) & = & (x+1) \odot (x^2 + x + 1) \\
+\end{tabular}
+\end{center}
+
 \end{landscape}
 
 \end{twocolumn}
